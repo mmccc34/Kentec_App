@@ -4,6 +4,8 @@ namespace Sthom\App\Model;
 
 class task
 {
+const TABLE="task";
+
     private ?int $id = null;
     private string $name;
     private ?string $description = null;

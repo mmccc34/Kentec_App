@@ -4,6 +4,7 @@ namespace Sthom\App\Model;
 
 class state
 {
+    const TABLE="state";
     private ?int $id = null;
     private string $name;
 

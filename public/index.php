@@ -3,7 +3,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 use Sthom\Kernel\Kernel;
 
 try {
-    $kernel=new Kernel();
+    Kernel::boot();
 
 } catch (Exception $e) {
     if ($_ENV['DEBUG'] === 'false') {

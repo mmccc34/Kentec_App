@@ -4,6 +4,8 @@ namespace Sthom\App\Model;
 
 class client
 {
+const TABLE="client";
+
     private ?int $id = null;
     private string $siren;
     private ?string $name = null;

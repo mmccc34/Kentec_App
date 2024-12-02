@@ -1,12 +1,31 @@
-h1{
-    color:red;
+h1 {
+    color: red;
 }
-.day{
-    background-color:aqua;
-    border:solid 1px white;
+
+.day {
+    background-color: aqua;
+    border: solid 1px white;
     box-sizing: border-box;
 }
-.task{
+
+.task {
     position: relative;
     z-index: 10;
+}
+
+header {
+    background-color: #343a40;
+    padding: 1rem;
+}
+
+nav a {
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    margin-right: 1rem;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #2580db;
 }

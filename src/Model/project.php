@@ -4,6 +4,8 @@ namespace Sthom\App\Model;
 
 class project
 {
+const TABLE="project";
+
     private ?int $id = null;
     private ?\DateTimeImmutable $startDate = null;
     private ?\DateTimeImmutable $endDate = null;

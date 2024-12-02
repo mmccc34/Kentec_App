@@ -3,8 +3,8 @@
 namespace Sthom\App\Controller;
 
 use Sthom\App\Model\state;
-use Sthom\Kernel\AbstractController;
-use Sthom\Kernel\Repository;
+use Sthom\Kernel\Utils\AbstractController;
+use Sthom\Kernel\Utils\Repository;
 
 class StateController extends AbstractController{
     public function list(){

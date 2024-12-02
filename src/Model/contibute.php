@@ -4,6 +4,8 @@ namespace Sthom\App\Model;
 
 class contribute
 {
+const TABLE="contribute";
+
     private int $idDev;
     private int $idProject;
 

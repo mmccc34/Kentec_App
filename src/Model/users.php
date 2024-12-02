@@ -4,6 +4,8 @@ namespace Sthom\App\Model;
 
 class users
 {
+const TABLE="users";
+
     private ?int $id = null;
     private string $password;
     private ?string $name = null;
