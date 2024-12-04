@@ -59,6 +59,7 @@ class Security
     public static final function disconnect(): void
     {
         // Définit la clé IS_AUTHENTICATED à `false` dans la session.
+        session_unset();
         $_SESSION['IS_AUTHENTICATED'] = false;
     }
 
@@ -105,6 +106,7 @@ class Security
             if (password_verify($password, $result->getPassword())) {
                 // Si le mot de passe est correct, connecter l'utilisateur.
                 $_SESSION['IS_AUTHENTICATED'] = true;
+                $_SESSION['ROLE']=$result->getRole();
             } else {
                 // Si le mot de passe est incorrect, lever une exception.
                 throw new \Exception('Mot de passe incorrect');

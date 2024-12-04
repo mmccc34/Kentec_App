@@ -2,6 +2,9 @@
 
 namespace Sthom\Kernel;
 
+use Exception;
+use Sthom\Kernel\Utils\Security;
+
 /**
  * Class Router
  * Cette classe permet de gérer le routage des requêtes HTTP vers les contrôleurs correspondants.
@@ -55,6 +58,7 @@ class Router
          * Chaque route est définie sous la forme `path => ['HTTP_METHODS' => ..., 'CONTROLLER' => ..., 'METHOD' => ...]`.
          */
         foreach (ROUTES as $path => $route) {
+            
             /**
              * Étape 5 : Vérifier si la méthode HTTP est valide pour cette route.
              * - Les méthodes HTTP (GET, POST, etc.) peuvent être définies soit comme une chaîne, soit comme un tableau.
@@ -66,6 +70,17 @@ class Router
              * Étape 6 : Vérifier si l'URL demandée correspond à la route actuelle.
              */
             if ($path === $currentPath) {
+                if($route["REQUIRED_AUTH"]){
+                    if(!Security::isConnected()){
+                        throw new Exception("Auth required",401);
+                    }
+                    else
+                    if(isset($route["ROLES"])){
+                        if(!in_array($_SESSION["ROLE"],$route["ROLES"])){
+                            throw new Exception("Permission denied",403);
+                        }
+                    }
+                }
                 switch (gettype($route['HTTP_METHODS'])) {
                     case 'string':
                         // Si une seule méthode est autorisée, on vérifie qu'elle correspond à celle utilisée.
@@ -142,7 +157,7 @@ class Router
          * Étape 10 : Si aucune route correspondante n'a été trouvée, lever une exception.
          */
         if (!$isRouteFound) {
-            throw new \Exception('No route found'); // Erreur si aucune route ne correspond
+            throw new \Exception('No route found',404); // Erreur si aucune route ne correspond
         }
     }
 }
