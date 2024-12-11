@@ -4,6 +4,7 @@ namespace Sthom\App\Controller;
 
 use Sthom\App\Model\users;
 use Sthom\Kernel\Utils\AbstractController;
+use Sthom\Kernel\Utils\Repository;
 use Sthom\Kernel\Utils\Security;
 
 class AuthController extends AbstractController
@@ -23,14 +24,38 @@ class AuthController extends AbstractController
                         "message" => $message,
                     ]);
                 }
-            }else{
+            } else {
                 $this->render("auth/login");
             }
         }
-        
     }
-    public function logout(){
+    public function logout()
+    {
         Security::disconnect();
         $this->redirect("/login");
+    }
+    public function register()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if ($_POST['password'] === $_POST['confirm_password']) {
+                $user = new users;
+                $repo = new Repository(users::class);
+                $user->setName($_POST['name']);
+                $user->setFirstname($_POST['firstname']);
+                $user->setRole($_POST['role']);
+                $user->setEmail($_POST['email']);
+                $hashPassword = password_hash($_POST['password'], PASSWORD_DEFAULT);
+                $user->setPassword($hashPassword);
+                $repo->insert($user);
+                $this->redirect("/login");
+            }
+            else{
+                $message='mots de passe non-identiques';
+                $this->render('auth/register',[
+                    'message'=>$message,
+                ]);
+            }
+        }
+        $this->render('auth/register');
     }
 }

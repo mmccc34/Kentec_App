@@ -13,6 +13,12 @@ const ROUTES = [
         "REQUIRED_AUTH"=>true,
         "ROLES"=>["admin"],
     ],
+    "/register" => [
+        "CONTROLLER" => "AuthController",
+        "METHOD" => "register",
+        "HTTP_METHODS" => ["GET","POST"],
+        "REQUIRED_AUTH"=>false,
+    ],
     "/login" => [
         "CONTROLLER" => "AuthController",
         "METHOD" => "login",

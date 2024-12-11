@@ -113,7 +113,7 @@ class Security
             }
         } else {
             // Si aucun utilisateur n'est trouvé, lever une exception.
-            throw new \Exception("L'utilisateur n'existe pas");
+            throw new \Exception("adresse email incorrecte");
         }
     }
 }

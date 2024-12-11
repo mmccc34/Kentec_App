@@ -18,6 +18,7 @@ class UsersController extends AbstractController{
         $this->render('users/detail',["user"=>$user,'title'=>'user detail']);
 
     }
+    
     public function userToJson(int $id){
         $repo=new Repository(users::class);
         $user=$repo->fetchById($id);

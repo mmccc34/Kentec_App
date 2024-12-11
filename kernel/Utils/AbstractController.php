@@ -121,5 +121,6 @@ class AbstractController
     {
         // Définit l'en-tête HTTP pour rediriger l'utilisateur vers une autre URL.
         header('Location: ' . $route);
+        exit;
     }
 }
