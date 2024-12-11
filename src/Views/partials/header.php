@@ -4,7 +4,7 @@
     <nav class="container d-flex align-items-center justify-content-between">
       <a href="/" class="">Accueil</a>
       <div>
-        <a href="#about">À propos</a>
+        <a href="/users/list">Utilisateurs</a>
         <a href="#services">Services</a>
         <?php
         if(isset($_SESSION["IS_AUTHENTICATED"]) && $_SESSION["IS_AUTHENTICATED"]===true){

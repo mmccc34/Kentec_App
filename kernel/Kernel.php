@@ -28,5 +28,4 @@ class Kernel
         Configuration::loadConfiguration(); // Charge les variables d'environnement du fichier .env
         Router::dispatch(); // redirige la requête HTTP du client vers le contrôleur correspondant
     }
-
 }

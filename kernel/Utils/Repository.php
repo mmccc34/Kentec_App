@@ -17,6 +17,7 @@ class Repository
     private ?string $sql;              // Contient la requête SQL en cours d'exécution
     private ?\PDOStatement $request;  // Contient la requête préparée PDO
     private string $table;            // Nom de la table associée au modèle
+    private readonly string $model;
 
     /**
      * Constructeur de la classe Repository.
@@ -25,8 +26,9 @@ class Repository
      * @param string $model Le namespace complet de la classe du modèle (exemple : `App\Models\User`).
      * @throws \Exception Si la constante `TABLE` n'est pas définie dans la classe modèle.
      */
-    public function __construct(private readonly string $model)
+    public function __construct(string $model)
     {
+        $this->model=$model;
         // Vérifie si le modèle possède une constante `TABLE` définissant le nom de la table associée.
         if (defined($this->model . '::TABLE')) {
             $this->table = $this->model::TABLE;
@@ -45,6 +47,7 @@ class Repository
     {
         // Prépare une requête DELETE à l'aide de SqlBuilder.
         $query = SqlBuilder::prepareDelete($this->table, $id);
+
         $this->sql = $query['sql'];
 
         // Exécute la requête préparée avec les paramètres.
@@ -170,6 +173,17 @@ class Repository
 
         // Convertit chaque ligne de données en objet du modèle en utilisant `hydrate`.
         return $isCustom ? $results : array_map(fn($data) => $this->hydrate($data), $results);
+    }
+    public function fetchById(int $id): array
+    {
+        $query=SqlBuilder::prepareSelect($this->table,['id' => $id]);
+        
+        $this->sql = $query['sql'];
+        $this->prepare($query['values']);
+        
+
+        // Convertit chaque ligne de données en objet du modèle en utilisant `hydrate`.
+        return $this->request->fetchAll(\PDO::FETCH_ASSOC);
     }
 
     /**

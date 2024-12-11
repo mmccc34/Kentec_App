@@ -25,6 +25,27 @@ const ROUTES = [
         "HTTP_METHODS" => "GET",
         "REQUIRED_AUTH"=>true,
     ],
+    "/users/list" => [
+        "CONTROLLER" => "UsersController",
+        "METHOD" => "list",
+        "HTTP_METHODS" => "GET",
+        "REQUIRED_AUTH"=>true,
+        "ROLES"=>["admin"],
+    ],
+    "/user" => [
+        "CONTROLLER" => "UsersController",
+        "METHOD" => "detail",
+        "HTTP_METHODS" => "GET",
+        "REQUIRED_AUTH"=>true,
+        "ROLES"=>["admin"],
+    ],
+    "/api/user" => [
+        "CONTROLLER" => "UsersController",
+        "METHOD" => "userToJson",
+        "HTTP_METHODS" => "GET",
+        "REQUIRED_AUTH"=>true,
+        "ROLES"=>["admin"],
+    ],
 
     
 ];
