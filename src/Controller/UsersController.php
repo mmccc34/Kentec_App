@@ -7,6 +7,10 @@ use Sthom\Kernel\Utils\AbstractController;
 use Sthom\Kernel\Utils\Repository;
 
 class UsersController extends AbstractController{
+
+
+
+    
     public function list(){
         $repo=new Repository(users::class);
         $users=$repo->getAll();
