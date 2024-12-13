@@ -40,12 +40,16 @@ class AuthController extends AbstractController
             if ($_POST['password'] === $_POST['confirm_password']) {
                 $user = new users;
                 $repo = new Repository(users::class);
+
                 $user->setName($_POST['name']);
                 $user->setFirstname($_POST['firstname']);
-                $user->setRole($_POST['role']);
+                $user->addRole($_POST['role']);
                 $user->setEmail($_POST['email']);
+                //attention que le mot de passe soit conforme (robustesse) 12 caractères, majuscules, etc...
+
                 $hashPassword = password_hash($_POST['password'], PASSWORD_DEFAULT);
                 $user->setPassword($hashPassword);
+
                 $repo->insert($user);
                 $this->redirect("/login");
             }

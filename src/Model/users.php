@@ -11,7 +11,7 @@ const TABLE="users";
     private ?string $name = null;
     private ?string $firstname = null;
     private string $email;
-    private string $role;
+    private string $role="";
 
     public function getId(): ?int
     {
@@ -63,13 +63,18 @@ const TABLE="users";
         $this->email = $email;
     }
 
-    public function getRole(): string
+    public function getRole(): array
     {
-        return $this->role;
+        return unserialize($this->role);
     }
 
-    public function setRole(string $role): void
+    public function setRole(string $roles): void
     {
-        $this->role = $role;
+        $this->role=serialize($roles);
+    }
+    public function addRole(string $role):void{
+        $roles=unserialize($this->role);
+        $roles[]=$role;
+        $this->role=serialize($roles);
     }
 }
