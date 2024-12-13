@@ -63,18 +63,14 @@ const TABLE="users";
         $this->email = $email;
     }
 
-    public function getRole(): array
+    public function getRole(): string
     {
-        return unserialize($this->role);
+        return $this->role;
     }
 
-    public function setRole(string $roles): void
+    public function setRole(string $role): void
     {
-        $this->role=serialize($roles);
+        $this->role=$role;
     }
-    public function addRole(string $role):void{
-        $roles=unserialize($this->role);
-        $roles[]=$role;
-        $this->role=serialize($roles);
-    }
+
 }
