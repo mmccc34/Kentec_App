@@ -3,7 +3,6 @@
 namespace Sthom\App\Controller;
 
 use Sthom\App\Model\client;
-use Sthom\App\Model\state;
 use Sthom\Kernel\Utils\AbstractController;
 use Sthom\Kernel\Utils\Repository;
 
