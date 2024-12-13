@@ -56,7 +56,14 @@ const ROUTES = [
     ],
     "/client/create" => [
         "CONTROLLER" => "ClientController",
-        "METHOD" => "createClient",
+        "METHOD" => "create",
+        "HTTP_METHODS" => ["GET","POST"],
+        "REQUIRED_AUTH"=>true,
+        "ROLES"=>["admin"],
+    ],
+    "/client/update" => [
+        "CONTROLLER" => "ClientController",
+        "METHOD" => "update",
         "HTTP_METHODS" => ["GET","POST"],
         "REQUIRED_AUTH"=>true,
         "ROLES"=>["ROLE_ADMIN"],
