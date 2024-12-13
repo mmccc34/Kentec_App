@@ -59,8 +59,12 @@ const ROUTES = [
         "REQUIRED_AUTH"=>true,
         "ROLES"=>["admin"],
     ],
+    "/users/create" => [
+        "CONTROLLER" => "UsersController",
+        "METHOD" => "create",
+        "HTTP_METHODS" => ["GET", "POST"],
+        "REQUIRED_AUTH" => true,
+        "ROLES" => ["admin"],
+    ],
 
-
- 
-    
 ];
