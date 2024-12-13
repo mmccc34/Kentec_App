@@ -17,7 +17,7 @@
 
 
           <label for="date" class="form-label">date</label>
-          <input type="date" class="form-control" id="date" name="date" required/>
+          <input type="date" class="form-control" id="date" name="dateCreate" required/>
 
           <button type="submit" class="btn btn-success mt-3">Envoyer</button>
         </form>

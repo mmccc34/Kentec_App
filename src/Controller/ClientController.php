@@ -12,7 +12,7 @@ class ClientController extends AbstractController
 
     // Création des clients
 
-    public function createClient()
+    public function create()
     {
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -20,9 +20,10 @@ class ClientController extends AbstractController
             $client = new client();
 
             $client->setsiren($_POST['siren']);
+            $client->setname($_POST['name']);
             $client->setnaf($_POST['naf']);
             $client->setstaff($_POST['staff']);
-            $client->setdateCreate($_POST['dateCreate']);
+            $client->setdateCreate(new \DateTimeImmutable($_POST['dateCreate']));
 
             $clientRepo = new Repository(client::class);
 
@@ -39,14 +40,35 @@ class ClientController extends AbstractController
 
     //UPdate client
 
-    public function clientUpDate(){
-
+    public function update(?int $id=null){
+        if($id===null){
+            throw new \Exception("client innexistant", 404);
+        }
+        
         $clientRepo = new Repository(client::class);
-        $client = $clientRepo->find($id);
+
+        // Recupération du client à modifier
+
+        $client = $clientRepo->getById($id);
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+            $client->setsiren($_POST['siren']);
+            $client->setname($_POST['name']);
+            $client->setnaf($_POST['naf']);
+            $client->setstaff($_POST['staff']);
+            $client->setdateCreate(new \DateTimeImmutable($_POST['dateCreate']));
+
+            $clientRepo -> update($client);
 
 
+            $this -> redirect('/');
+
+    } else{
+        $this -> render('client/updateClient', ['client' => $client]);
 
     }
 
 
+}
 }
