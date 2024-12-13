@@ -11,7 +11,7 @@ const ROUTES = [
         "METHOD" => "list",
         "HTTP_METHODS" => "GET",
         "REQUIRED_AUTH"=>true,
-        "ROLES"=>["admin"],
+        "ROLES"=>["ROLE_ADMIN"],
     ],
     "/register" => [
         "CONTROLLER" => "AuthController",
@@ -35,29 +35,32 @@ const ROUTES = [
         "CONTROLLER" => "UsersController",
         "METHOD" => "list",
         "HTTP_METHODS" => "GET",
+        "ROLES"=>["ROLE_ADMIN"],
         "REQUIRED_AUTH"=>true,
-        "ROLES"=>["admin"],
     ],
     "/user" => [
         "CONTROLLER" => "UsersController",
         "METHOD" => "detail",
         "HTTP_METHODS" => "GET",
         "REQUIRED_AUTH"=>true,
-        "ROLES"=>["admin"],
+        "ROLES"=>["ROLE_ADMIN"],
+
     ],
     "/api/user" => [
         "CONTROLLER" => "UsersController",
         "METHOD" => "userToJson",
         "HTTP_METHODS" => "GET",
         "REQUIRED_AUTH"=>true,
-        "ROLES"=>["admin"],
+        "ROLES"=>["ROLE_ADMIN"],
+
     ],
     "/client/create" => [
         "CONTROLLER" => "ClientController",
         "METHOD" => "createClient",
         "HTTP_METHODS" => ["GET","POST"],
         "REQUIRED_AUTH"=>true,
-        "ROLES"=>["admin"],
+        "ROLES"=>["ROLE_ADMIN"],
+
     ],
 
 

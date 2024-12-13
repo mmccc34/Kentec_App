@@ -116,4 +116,35 @@ class Security
             throw new \Exception("Mot de passe ou adresse email incorrecte");
         }
     }
+    public static function isStrongPassword(string $password): bool
+{
+    // Vérifier que le mot de passe contient au moins 12 caractères
+    if (strlen($password) < 12) {
+        return false;
+    }
+
+    // Vérifier qu'il contient au moins une lettre majuscule
+    if (!preg_match('/[A-Z]/', $password)) {
+        return false;
+    }
+
+    // Vérifier qu'il contient au moins une lettre minuscule
+    if (!preg_match('/[a-z]/', $password)) {
+        return false;
+    }
+
+    // Vérifier qu'il contient au moins un chiffre
+    if (!preg_match('/\d/', $password)) {
+        return false;
+    }
+
+    // Vérifier qu'il contient au moins un caractère spécial (par exemple @, #, $, %, etc.)
+    if (!preg_match('/[\W_]/', $password)) {
+        return false;
+    }
+
+    // Si toutes les vérifications passent, le mot de passe est considéré comme fort
+    return true;
+}
+
 }
