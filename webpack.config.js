@@ -29,16 +29,11 @@ module.exports = {
         ],
       },
       {
-        test: /\.(png|jpe?g|gif|svg)$/, // Gestion des fichiers images
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: '[name].[hash].[ext]',
-              outputPath: 'images/',
-            },
-          },
-        ],
+        test: /\.(png|jpe?g|gif|svg|webp)$/i, // Types d'images pris en charge
+        type: 'asset/resource', // Copie les fichiers dans le répertoire de sortie
+        generator: {
+          filename: 'images/[name].[hash][ext]', // Chemin et nom des fichiers générés
+        },
       },
     ],
   },
