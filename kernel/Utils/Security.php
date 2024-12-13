@@ -109,11 +109,11 @@ class Security
                 $_SESSION['ROLE']=$result->getRole();
             } else {
                 // Si le mot de passe est incorrect, lever une exception.
-                throw new \Exception('Mot de passe incorrect');
+                throw new \Exception('Mot de passe ou adresse email incorrect');
             }
         } else {
             // Si aucun utilisateur n'est trouvé, lever une exception.
-            throw new \Exception("adresse email incorrecte");
+            throw new \Exception("Mot de passe ou adresse email incorrecte");
         }
     }
 }

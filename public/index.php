@@ -8,11 +8,7 @@ try {
 
 } catch (Exception $e) {
     $controller = new ErrorController();
-    $controller->render("errors/error",[
-        "errorType"=>"Error : " . $e->getCode(),
-        "errorMessage"=>$e->getMessage(),
-        "title"=>"Error"
-    ]);
+    $controller->displayError($e);
 }
 
 

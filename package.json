@@ -4,7 +4,7 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "build": "webpack --mode production",
+        "build": "webpack --mode production ",
         "watch": "webpack --watch --mode development",
         "dev": "webpack --mode development",
         "watch-and-serve": "concurrently \"npm run watch\" \"php -S localhost:2003 -t public\""
