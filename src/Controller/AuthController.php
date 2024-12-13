@@ -43,7 +43,7 @@ class AuthController extends AbstractController
 
                 $user->setName($_POST['name']);
                 $user->setFirstname($_POST['firstname']);
-                $user->addRole($_POST['role']);
+                $user->setRole($_POST['role']);
                 $user->setEmail($_POST['email']);
                 //attention que le mot de passe soit conforme (robustesse) 12 caractères, majuscules, etc...
 
