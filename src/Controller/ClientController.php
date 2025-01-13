@@ -4,7 +4,7 @@ namespace Sthom\App\Controller;
 
 use Exception;
 use Sthom\App\Model\client;
-use Sthom\Kernel\Utils\AbstractController;
+use Sthom\Kernel\Http\AbstractController;
 use Sthom\Kernel\Utils\Repository;
 
 class ClientController extends AbstractController
@@ -28,30 +28,32 @@ class ClientController extends AbstractController
             $clientRepo = new Repository(client::class);
 
             $clientRepo->insert($client);
+
             
             $this -> redirect('/client/list');
 
-        }else{
+        } else {
             $this->render('client/create');
-
         }
-
     }
 
     //UPdate client
 
+
     public function update(?int $id){
         if($id===null){
             $this -> redirect('client/list');
+
+    
         }
-        
+
         $clientRepo = new Repository(client::class);
 
         // Recupération du client à modifier
 
         $client = $clientRepo->getById($id);
         if ($client === null){
-            $this -> redirect ('list');
+            $this -> redirect ('client/list');
         }
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -62,9 +64,8 @@ class ClientController extends AbstractController
             $client->setstaff($_POST['staff']);
             $client->setdateCreate(new \DateTimeImmutable($_POST['dateCreate']));
 
-            $clientRepo -> update($client);
-
-
+            $clientRepo->update($client);
+          
             $this -> redirect('list');
 
     } else{
@@ -74,20 +75,6 @@ class ClientController extends AbstractController
 
 }
 
-// delete client
-
-public function delete(?int $id){
-    if($id === null){
-        throw new \Exception("client innexistant", 404);
-    }
-    $clientRepo = new Repository( client::class);
-
-    $clientRepo -> delete($id);
-
-    $this -> redirect('list');
-
-
-}
 
 // Affichage de la liste des clients
 
@@ -119,11 +106,18 @@ public function list(){
         $repo=new Repository(client::class);
         $client=$repo->getById($id);
         $this->render('client/detail',["client"=>$client,'title'=>' detail du client']);
+    }
+
+    public function delete(?int $id)
+    {
+        if ($id === null) {
+            throw new Exception("client innexistant", 404);
+        }
+        $clientRepo = new Repository(client::class);
 
 
-}
+        $clientRepo->delete($id);
 
+        $this->redirect('/client/list');
+    }
 
-
-
-}

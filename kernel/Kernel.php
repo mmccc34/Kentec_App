@@ -2,6 +2,8 @@
 
 namespace Sthom\Kernel;
 
+use Sthom\Kernel\Http\Router;
+
 /**
  * Class Kernel
  *

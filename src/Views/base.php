@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -12,7 +13,7 @@
       crossorigin="anonymous"
     />
 
-    <title><?php echo $title?></title>
+    <title><?php if(isset($title)) echo $title;?></title>
 </head>
 <body>
     <?php include_once __DIR__ .'/partials/header.php'; ?>

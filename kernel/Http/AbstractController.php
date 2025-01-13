@@ -1,6 +1,6 @@
 <?php
 
-namespace Sthom\Kernel\Utils;
+namespace Sthom\Kernel\Http;
 
 /**
  * Class AbstractController
@@ -34,24 +34,9 @@ class AbstractController
      */
     public final function json(array $data, int $status = 200): void
     {
-        try {
-            // Définit le code de statut HTTP pour la réponse (exemple : 200, 404).
-            http_response_code($status);
-
-            // Définit l'en-tête HTTP pour indiquer que le contenu est de type JSON.
-            header('Content-Type: application/json');
-
-            // Encode les données en JSON et les envoie au client.
-            echo json_encode($data);
-
-            // Termine l'exécution du script pour éviter d'envoyer des données supplémentaires.
-            die();
-        } catch (\Exception $e) {
-            // En cas d'erreur, affiche le message d'exception et arrête le script.
-            echo $e->getMessage();
-            exit();
-        }
+        Response::json($data, $status);
     }
+
 
     /**
      * Méthode pour afficher une vue HTML en y injectant des données dynamiques.
@@ -74,31 +59,9 @@ class AbstractController
      */
     public final function render(string $path, array $data = [], int $status = 200): void
     {
-        try {
-            // Définit le code de statut HTTP pour la réponse (exemple : 200, 404).
-            http_response_code($status);
-
-            // Définit l'en-tête HTTP pour indiquer que le contenu est de type HTML.
-            header('Content-Type: text/html');
-
-            // Extrait les clés du tableau `$data` en tant que variables disponibles dans la vue.
-            // Exemple : ['title' => 'Bienvenue'] => $title = 'Bienvenue';
-            extract($data);
-
-            // Définit le chemin complet du fichier de vue demandé.
-            $view = __DIR__ . "/../../src/Views/" . $path.".php";
-
-            // Inclut le fichier de base HTML (layout principal).
-            include __DIR__ . "/../../src/Views/base.php";
-
-            // Termine l'exécution du script pour éviter d'envoyer des données supplémentaires.
-            die();
-        } catch (\Exception $e) {
-            // En cas d'erreur, affiche le message d'exception et termine le script.
-            echo $e->getMessage();
-            die();
-        }
+        Response::html("$path.php", $data, $status);
     }
+
 
     /**
      * Méthode pour rediriger l'utilisateur vers une autre URL.
@@ -119,8 +82,6 @@ class AbstractController
      */
     public final function redirect(string $route): void
     {
-        // Définit l'en-tête HTTP pour rediriger l'utilisateur vers une autre URL.
-        header('Location: ' . $route);
-        exit;
+        Response::redirect($route);
     }
 }

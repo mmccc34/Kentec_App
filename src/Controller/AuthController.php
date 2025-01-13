@@ -3,7 +3,7 @@
 namespace Sthom\App\Controller;
 
 use Sthom\App\Model\users;
-use Sthom\Kernel\Utils\AbstractController;
+use Sthom\Kernel\Http\AbstractController;
 use Sthom\Kernel\Utils\Repository;
 use Sthom\Kernel\Utils\Security;
 

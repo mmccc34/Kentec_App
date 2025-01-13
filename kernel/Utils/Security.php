@@ -107,6 +107,7 @@ class Security
                 // Si le mot de passe est correct, connecter l'utilisateur.
                 $_SESSION['IS_AUTHENTICATED'] = true;
                 $_SESSION['ROLE']=$result->getRole();
+                $_SESSION['USER']=$result;
             } else {
                 // Si le mot de passe est incorrect, lever une exception.
                 throw new \Exception('Mot de passe ou adresse email incorrect');
@@ -146,5 +147,12 @@ class Security
     // Si toutes les vérifications passent, le mot de passe est considéré comme fort
     return true;
 }
+public static function hasRole(array $roles): bool
+    {
+        if (isset($_SESSION['ROLE'])) {
+            return in_array($_SESSION['ROLE'],$roles);
+        }
+        return false;
+    }
 
 }
