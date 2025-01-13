@@ -48,8 +48,8 @@
 
                             <!-- Lien vers le détail du client -->
                             <td>
-                                <a href="/client?id=<?= $client->getId(); ?>" class="btn btn-dark ">Voir Profil</a>
-                                <a href="/client/delete?id=<?php echo $client->getId(); ?>" class="btn btn-danger btn-delete" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ?');">Supprimer</a>
+                                <a href="/client/<?= $client->getId(); ?>" class="btn btn-dark ">Voir Profil</a>
+                                <a href="/client/delete/<?php echo $client->getId(); ?>" class="btn btn-danger btn-delete" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ?');">Supprimer</a>
 
                             </td>
                         </tr>
