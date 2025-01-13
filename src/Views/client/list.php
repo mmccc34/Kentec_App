@@ -49,7 +49,7 @@
 
                         </td>
                         <td>
-                            <a href="/client?id=<?php echo $client->getId(); ?>" class="btn btn-dark btn-sm">Voir Profil</a>
+                            <a href="/client/<?php echo $client->getId(); ?>" class="btn btn-dark btn-sm">Voir Profil</a>
 
                         </td>
 

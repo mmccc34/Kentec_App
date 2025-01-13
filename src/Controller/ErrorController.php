@@ -2,7 +2,7 @@
 
 namespace Sthom\App\Controller;
 
-use Sthom\Kernel\Utils\AbstractController;
+use Sthom\Kernel\Http\AbstractController;
 
 class ErrorController extends AbstractController{
     public function displayError(\Exception $error){
