@@ -4,54 +4,49 @@ const ROUTES = [
         "CONTROLLER" => "HomeController",
         "METHOD" => "index",
         "HTTP_METHODS" => "GET",
-        "REQUIRED_AUTH" => true,
+        "AUTH" => ["ROLE_ADMIN","ROLE_DEV","ROLE_CHEF"],
     ],
     "/state/list" => [
         "CONTROLLER" => "StateController",
         "METHOD" => "list",
         "HTTP_METHODS" => "GET",
-        "REQUIRED_AUTH" => true,
-        "ROLES" => ["ROLE_ADMIN"],
+        "AUTH" => ["ROLE_ADMIN"],
     ],
     "/register" => [
         "CONTROLLER" => "AuthController",
         "METHOD" => "register",
         "HTTP_METHODS" => ["GET", "POST"],
-        "REQUIRED_AUTH" => false,
     ],
     "/login" => [
         "CONTROLLER" => "AuthController",
         "METHOD" => "login",
         "HTTP_METHODS" => ["GET", "POST"],
-        "REQUIRED_AUTH" => false,
     ],
     "/logout" => [
         "CONTROLLER" => "AuthController",
         "METHOD" => "logout",
         "HTTP_METHODS" => "GET",
-        "REQUIRED_AUTH" => true,
+        "AUTH" => ["ROLE_ADMIN","ROLE_DEV","ROLE_CHEF"],
+
     ],
     "/users/list" => [
         "CONTROLLER" => "UsersController",
         "METHOD" => "list",
         "HTTP_METHODS" => "GET",
-        "ROLES" => ["ROLE_ADMIN"],
-        "REQUIRED_AUTH" => true,
+        "AUTH" => ["ROLE_ADMIN"],
     ],
-    "/user" => [
+    "/user/{id}" => [
         "CONTROLLER" => "UsersController",
         "METHOD" => "detail",
         "HTTP_METHODS" => "GET",
-        "REQUIRED_AUTH" => true,
-        "ROLES" => ["ROLE_ADMIN"],
+        "AUTH" => ["ROLE_ADMIN"],
 
     ],
     "/api/user" => [
         "CONTROLLER" => "UsersController",
         "METHOD" => "userToJson",
         "HTTP_METHODS" => "GET",
-        "REQUIRED_AUTH" => true,
-        "ROLES" => ["ROLE_ADMIN"],
+        "AUTH" => ["ROLE_ADMIN"],
 
     ],
 
@@ -61,59 +56,51 @@ const ROUTES = [
         "CONTROLLER" => "ClientController",
         "METHOD" => "create",
         "HTTP_METHODS" => ["GET", "POST"],
-        "REQUIRED_AUTH" => true,
-        "ROLES" => ["ROLE_ADMIN"],
+        "AUTH" => ["ROLE_ADMIN"],
     ],
-    "/client/update" => [
+    "/client/update/{id}" => [
         "CONTROLLER" => "ClientController",
         "METHOD" => "update",
         "HTTP_METHODS" => ["GET", "POST"],
-        "REQUIRED_AUTH" => true,
-        "ROLES" => ["ROLE_ADMIN"],
+        "AUTH" => ["ROLE_ADMIN"],
     ],
-    "/client/delete" => [
+    "/client/delete/{id}" => [
         "CONTROLLER" => "ClientController",
         "METHOD" => "delete",
         "HTTP_METHODS" => ["GET", "POST"],
-        "REQUIRED_AUTH" => true,
-        "ROLES" => ["ROLE_ADMIN"],
+        "AUTH" => ["ROLE_ADMIN"],
     ],
     "/client/list" => [
         "CONTROLLER" => "ClientController",
         "METHOD" => "list",
         "HTTP_METHODS" => ["GET", "POST"],
-        "REQUIRED_AUTH" => true,
-        "ROLES" => ["ROLE_ADMIN"],
+        "AUTH" => ["ROLE_ADMIN"],
     ],
-    "/client" => [
-        "CONTROLLER" => "clientController",
+    "/client/{id}"=>[
+        "CONTROLLER" => "ClientController",
         "METHOD" => "detail",
         "HTTP_METHODS" => "GET",
-        "REQUIRED_AUTH" => true,
-        "ROLES" => ["ROLE_ADMIN"],
+        "AUTH" => ["ROLE_ADMIN"],
     ],
     "/users/create" => [
         "CONTROLLER" => "UsersController",
         "METHOD" => "create",
         "HTTP_METHODS" => ["GET", "POST"],
-        "REQUIRED_AUTH" => true,
-        "ROLES" => ["ROLE_ADMIN"],
+        "AUTH" => ["ROLE_ADMIN"],
     ],
 
-    "/users/update" => [
+    "/users/update/{id}" => [
         "CONTROLLER" => "UsersController",
         "METHOD" => "update",
         "HTTP_METHODS" => ["GET", "POST"],
-        "REQUIRED_AUTH" => true,
-        "ROLES" => ["ROLE_ADMIN"],
+        "AUTH" => ["ROLE_ADMIN"],
     ],
 
-    "/users/delete" => [
+    "/users/delete/{id}" => [
         "CONTROLLER" => "UsersController",
         "METHOD" => "delete",
         "HTTP_METHODS" => ["GET", "POST"],
-        "REQUIRED_AUTH" => true,
-        "ROLES" => ["ROLE_ADMIN"],
+        "AUTH" => ["ROLE_ADMIN"],
     ],
 
     // fin des routes pour les clients
@@ -125,6 +112,6 @@ const ROUTES = [
         "METHOD" => "create",
         "HTTP_METHODS" => ["GET", "POST"],
         "REQUIRED_AUTH" => true,
-        "ROLES" => ["ROLE_ADMIN"],
+        "AUTH" => ["ROLE_ADMIN"],
     ]
 ];

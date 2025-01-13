@@ -3,7 +3,7 @@
 namespace Sthom\App\Controller;
 
 use Sthom\App\Model\state;
-use Sthom\Kernel\Utils\AbstractController;
+use Sthom\Kernel\Http\AbstractController;
 use Sthom\Kernel\Utils\Repository;
 
 class StateController extends AbstractController{

@@ -3,7 +3,7 @@
 namespace Sthom\App\Controller;
 
 use Sthom\App\Model\users;
-use Sthom\Kernel\Utils\AbstractController;
+use Sthom\Kernel\Http\AbstractController;
 use Sthom\Kernel\Utils\Repository;
 
 class UsersController extends AbstractController
@@ -104,7 +104,7 @@ class UsersController extends AbstractController
 
         $userRepo -> delete($id);
 
-        $this -> redirect('list');
+        $this -> redirect('/users/list');
 
 
     }

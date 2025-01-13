@@ -4,7 +4,7 @@ namespace Sthom\App\Controller;
 
 use Exception;
 use Sthom\App\Model\Project;
-use Sthom\Kernel\Utils\AbstractController;
+use Sthom\Kernel\Http\AbstractController;
 use Sthom\Kernel\Utils\Repository;
 
 class ProjectController extends AbstractController

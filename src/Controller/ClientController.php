@@ -4,7 +4,7 @@ namespace Sthom\App\Controller;
 
 use Exception;
 use Sthom\App\Model\client;
-use Sthom\Kernel\Utils\AbstractController;
+use Sthom\Kernel\Http\AbstractController;
 use Sthom\Kernel\Utils\Repository;
 
 class ClientController extends AbstractController
@@ -77,7 +77,7 @@ class ClientController extends AbstractController
 
         $clientRepo->delete($id);
 
-        $this->redirect('list');
+        $this->redirect('/client/list');
     }
 
     // Affichage de la liste des clients
