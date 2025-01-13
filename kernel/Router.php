@@ -72,11 +72,12 @@ class Router
              */
             if ($path === $currentPath) {
                 if ($route["REQUIRED_AUTH"] !== Security::isConnected()) {
-                    $message="Auth required";
-                    if(Security::isConnected())$message="You are already connected";
-                    throw new Exception($message, 401);
+                    if(!Security::isConnected())$exit="/login";
+                    else $exit="/";
+                    header("Location: ".$exit);
+                    exit;
                 } else {
-                    if (isset($route["ROLES"])) {
+                    if (isset($route["ROLES"]) &&  $_SESSION['ROLE'] !== 'ROLE_ADMIN') {
                         if (!in_array($_SESSION["ROLE"], $route["ROLES"])) {
                             throw new Exception("Permission denied", 403);
                         }

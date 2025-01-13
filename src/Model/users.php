@@ -11,7 +11,7 @@ const TABLE="users";
     private ?string $name = null;
     private ?string $firstname = null;
     private string $email;
-    private string $role;
+    private string $role="";
 
     public function getId(): ?int
     {
@@ -70,6 +70,7 @@ const TABLE="users";
 
     public function setRole(string $role): void
     {
-        $this->role = $role;
+        $this->role=$role;
     }
+
 }

@@ -4,7 +4,6 @@ namespace Sthom\App\Controller;
 
 use Exception;
 use Sthom\App\Model\client;
-use Sthom\App\Model\state;
 use Sthom\Kernel\Utils\AbstractController;
 use Sthom\Kernel\Utils\Repository;
 
