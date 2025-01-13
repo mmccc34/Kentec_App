@@ -36,7 +36,7 @@ JOIN users pm ON pm.id = p.idManager
 JOIN client c ON c.id = p.idClient
 WHERE p.id=:id
 ";
-        return $this->customQuery($sql, [":id" => $id]);
+        return $this->customQuery($sql, [":id" => $id])[0];
     }
 
     public function getProjectsByClientId(int $clientId)

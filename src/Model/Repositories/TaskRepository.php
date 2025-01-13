@@ -36,6 +36,6 @@ JOIN users u ON u.id = t.idDev
 JOIN project p ON p.id = t.idProject
 JOIN state s ON s.id = t.idState
         WHERE t.id=:id ";
-        return $this->customQuery($query, [":id" => $id]);
+        return $this->customQuery($query, [":id" => $id])[0];
     }
 }
