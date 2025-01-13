@@ -214,4 +214,13 @@ class Repository
         // Récupère les résultats de la requête.
         return $this->fetchAll(true);
     }
+
+    public function save(\Sthom\App\Model\users $user)
+    {
+        if ($user->getId() === null) {
+            $this->insert($user);
+        } else {
+            $this->update($user);
+        }
+    }
 }

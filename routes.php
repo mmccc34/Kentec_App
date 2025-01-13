@@ -69,8 +69,12 @@ const ROUTES = [
         "ROLES"=>["ROLE_ADMIN"],
 
     ],
+    "/users/create" => [
+        "CONTROLLER" => "UsersController",
+        "METHOD" => "create",
+        "HTTP_METHODS" => ["GET", "POST"],
+        "REQUIRED_AUTH" => true,
+        "ROLES" => ["admin"],
+    ],
 
-
- 
-    
 ];

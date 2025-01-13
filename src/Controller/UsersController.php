@@ -28,4 +28,26 @@ class UsersController extends AbstractController{
         $user=$repo->fetchById($id);
         $this->json($user);
     }
+
+    public function create(): void
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $data = $_POST;
+
+            $user = new users();
+            $user->setName($data['name'] ?? null);
+            $user->setFirstname($data['firstname'] ?? null);
+            $user->setEmail($data['email']);
+            $user->setPassword(password_hash($data['password'], PASSWORD_BCRYPT));
+            $user->setRole($data['role'] ?? '');
+
+            $repo = new Repository(users::class);
+            $repo->save($user);
+
+            $this->redirect('/users/list');
+        } else {
+            $this->render('users/create', ['title' => 'Create User']);
+        }
+    }
+
 }
