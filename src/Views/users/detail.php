@@ -39,8 +39,8 @@
     </div>
     <div class="card-footer text-center">
       <a href="/users/list" class="btn btn-secondary">Retour à la liste</a>
-      <a href="/user/edit/<?php echo $user->getId(); ?>" class="btn btn-warning">Modifier</a>
-      <a href="/user/delete/<?php echo $user->getId(); ?>" class="btn btn-danger" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ?');">Supprimer</a>
+      <a href="/users/update?id=<?php echo $user->getId(); ?>" class="btn btn-warning">Modifier</a>
+      <a href="/users/delete?id=<?php echo $user->getId(); ?>" class="btn btn-danger" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ?');">Supprimer</a>
     </div>
   </div>
 </div>
