@@ -124,7 +124,24 @@ const ROUTES = [
         "CONTROLLER" => "ProjectController",
         "METHOD" => "create",
         "HTTP_METHODS" => ["GET", "POST"],
-        "REQUIRED_AUTH" => true,
-        "ROLES" => ["ROLE_ADMIN"],
-    ]
+        "AUTH" => ["ROLE_ADMIN", "ROLE_CHEF"],
+    ],
+    "/project/update/{id}" => [
+        "CONTROLLER" => "ProjectController",
+        "METHOD" => "update",
+        "HTTP_METHODS" => ["GET", "POST"],
+        "AUTH" => ["ROLE_ADMIN", "ROLE_CHEF"],
+    ],
+    "/project/delete/{id}" => [
+        "CONTROLLER" => "ProjectController",
+        "METHOD" => "delete",
+        "HTTP_METHODS" => ["GET", "POST"],
+        "AUTH" => ["ROLE_ADMIN", "ROLE_CHEF"],
+    ],
+    "/project/list" => [
+        "CONTROLLER" => "ProjectController",
+        "METHOD" => "list",
+        "HTTP_METHODS" => ["GET", "POST"],
+        "AUTH" => ["ROLE_ADMIN", "ROLE_CHEF"],
+    ],
 ];
