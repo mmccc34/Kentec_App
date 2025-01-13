@@ -14,10 +14,10 @@ use Sthom\Kernel\Database\SqlBuilder;
  */
 class Repository
 {
-    private ?string $sql;              // Contient la requête SQL en cours d'exécution
-    private ?\PDOStatement $request;  // Contient la requête préparée PDO
-    private string $table;            // Nom de la table associée au modèle
-    private readonly string $model;
+    protected ?string $sql;              // Contient la requête SQL en cours d'exécution
+    protected ?\PDOStatement $request;  // Contient la requête préparée PDO
+    protected string $table;            // Nom de la table associée au modèle
+    protected readonly string $model;
 
     /**
      * Constructeur de la classe Repository.
