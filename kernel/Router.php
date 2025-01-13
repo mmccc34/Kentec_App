@@ -15,6 +15,7 @@ use Sthom\Kernel\Utils\Security;
  */
 class Router
 {
+    
 
     /**
      * Méthode principale pour dispatcher une requête HTTP vers le contrôleur approprié.

@@ -54,6 +54,7 @@ const ROUTES = [
         "ROLES"=>["ROLE_ADMIN"],
 
     ],
+    // debut des routes pour le client
     "/client/create" => [
         "CONTROLLER" => "ClientController",
         "METHOD" => "create",
@@ -67,6 +68,28 @@ const ROUTES = [
         "HTTP_METHODS" => ["GET","POST"],
         "REQUIRED_AUTH"=>true,
         "ROLES"=>["ROLE_ADMIN"],
+    ],
+    "/client/delete" => [
+        "CONTROLLER" => "ClientController",
+        "METHOD" => "delete",
+        "HTTP_METHODS" => ["GET","POST"],
+        "REQUIRED_AUTH"=>true,
+        "ROLES"=>["ROLE_ADMIN"],
+    ],
+    "/client/list" => [
+        "CONTROLLER" => "ClientController",
+        "METHOD" => "list",
+        "HTTP_METHODS" => ["GET","POST"],
+        "REQUIRED_AUTH"=>true,
+        "ROLES"=>["ROLE_ADMIN"],
+    ],
+    "/client" => [
+        "CONTROLLER" => "clientController",
+        "METHOD" => "detail",
+        "HTTP_METHODS" => "GET",
+        "REQUIRED_AUTH"=>true,
+        "ROLES"=>["ROLE_ADMIN"],
+    ],
 
     ],
     "/users/create" => [
@@ -74,7 +97,8 @@ const ROUTES = [
         "METHOD" => "create",
         "HTTP_METHODS" => ["GET", "POST"],
         "REQUIRED_AUTH" => true,
-        "ROLES" => ["admin"],
+        "ROLES" => ["ROLE_ADMIN"],
     ],
 
+    // fin des routes pour les clients
 ];
