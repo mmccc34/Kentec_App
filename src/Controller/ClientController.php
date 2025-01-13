@@ -29,7 +29,7 @@ class ClientController extends AbstractController
 
             $clientRepo->insert($client);
             
-            $this -> redirect('/');
+            $this -> redirect('/client/list');
 
         }else{
             $this->render('client/create');
@@ -40,9 +40,9 @@ class ClientController extends AbstractController
 
     //UPdate client
 
-    public function update(?int $id=null){
+    public function update(?int $id){
         if($id===null){
-            throw new \Exception("client innexistant", 404);
+            $this -> redirect('client/list');
         }
         
         $clientRepo = new Repository(client::class);
@@ -50,6 +50,9 @@ class ClientController extends AbstractController
         // Recupération du client à modifier
 
         $client = $clientRepo->getById($id);
+        if ($client === null){
+            $this -> redirect ('list');
+        }
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
@@ -62,7 +65,7 @@ class ClientController extends AbstractController
             $clientRepo -> update($client);
 
 
-            $this -> redirect('/client/list');
+            $this -> redirect('list');
 
     } else{
         $this -> render('client/update', ['client' => $client]);
@@ -91,6 +94,22 @@ public function delete(?int $id){
 public function list(){
     $repo=new Repository(client::class);
     $clientList=$repo->getAll();
+    // Vérifie si la liste est vide
+
+    if (empty($clientList)) {
+        // Rend un message uniquement
+
+        $this->render('client/list', [
+            'message' => 'Aucun client trouvé.',
+            'title' => 'Liste des clients'
+        ]);
+    } else {
+        // Rend la liste des clients
+        $this->render('client/list', [
+            'clients' => $clientList,
+            'title' => 'Liste des clients'
+        ]);
+    }
     $this->render('client/list',["clients"=>$clientList,'title'=>'list des clients']);
 }
 

@@ -6,14 +6,6 @@
     <div class="card-body">
       <div class="row mb-3">
         <div class="col-md-4">
-          <strong>ID :</strong>
-        </div>
-        <div class="col-md-8">
-          <?php echo htmlspecialchars($client->getId()); ?>
-        </div>
-      </div>
-      <div class="row mb-3">
-        <div class="col-md-4">
           <strong>Siren:</strong>
         </div>
         <div class="col-md-8">
