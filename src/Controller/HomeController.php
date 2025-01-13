@@ -2,7 +2,7 @@
 
 namespace Sthom\App\Controller;
 
-use Sthom\Kernel\Utils\AbstractController;
+use Sthom\Kernel\Http\AbstractController;
 
 class HomeController extends AbstractController
 {
