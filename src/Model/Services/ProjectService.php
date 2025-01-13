@@ -1,17 +1,18 @@
 <?php
 
-namespace Sthom\App\Model\Repositories;
+namespace Sthom\App\Model\Service;
 
 use Sthom\App\Model\project;
 use Sthom\Kernel\Database\Database;
 use Sthom\Kernel\Utils\Repository;
 
-class ProjectRepository extends Repository
+class ProjectService
 {
+    private Repository $repo;
 
     public function __construct()
     {
-        parent::__construct(project::class);
+        $this->repo=new Repository(project::class);
     }
 
     public function getFullProjectById(int $id)
@@ -36,7 +37,7 @@ JOIN users pm ON pm.id = p.idManager
 JOIN client c ON c.id = p.idClient
 WHERE p.id=:id
 ";
-        return $this->customQuery($sql, [":id" => $id])[0];
+        return $this->repo->customQuery($sql, [":id" => $id])[0];
     }
 
     public function getProjectsByClientId(int $clientId)
@@ -68,7 +69,7 @@ WHERE p.id=:id
         ";
 
         // Utilisation de customQuery avec liaison de paramètres pour éviter les injections SQL
-        return $this->customQuery($sql, [":clientId" => $clientId]);
+        return $this->repo->customQuery($sql, [":clientId" => $clientId]);
     }
     public function deleteCascade(int $projectId) {
         // Démarrer une transaction pour garantir l'intégrité des données
@@ -77,15 +78,15 @@ WHERE p.id=:id
         try {
             // Supprimer les tâches associées au projet
             $sqlTasks = "DELETE FROM task WHERE idProject = :projectId";
-            $this->customQuery($sqlTasks, [":projectId" => $projectId]);
+            $this->repo->customQuery($sqlTasks, [":projectId" => $projectId]);
     
             // Supprimer les contributions des développeurs associées au projet
             $sqlContribute = "DELETE FROM contribute WHERE idProject = :projectId";
-            $this->customQuery($sqlContribute, [":projectId" => $projectId]);
+            $this->repo->customQuery($sqlContribute, [":projectId" => $projectId]);
     
             // Supprimer le projet (table project)
             $sqlProject = "DELETE FROM project WHERE id = :projectId";
-            $this->customQuery($sqlProject, [":projectId" => $projectId]);
+            $this->repo->customQuery($sqlProject, [":projectId" => $projectId]);
     
             // Si toutes les suppressions sont réussies, on valide la transaction
             Database::getConnexion()->commit();
