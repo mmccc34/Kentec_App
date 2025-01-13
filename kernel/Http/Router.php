@@ -112,7 +112,7 @@ class Router
     {
         if (isset($route['AUTH'])) {
             if (!Security::isConnected()) {
-                throw new \Exception('Unauthorized: Authentication required');
+                header("Location: /login");
             }
 
             if (is_array($route['AUTH']) && !Security::hasRole($route['AUTH'])) {
