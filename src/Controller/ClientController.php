@@ -2,6 +2,7 @@
 
 namespace Sthom\App\Controller;
 
+use Exception;
 use Sthom\App\Model\client;
 use Sthom\App\Model\state;
 use Sthom\Kernel\Utils\AbstractController;
@@ -32,7 +33,7 @@ class ClientController extends AbstractController
             $this -> redirect('/');
 
         }else{
-            $this->render('client/createClient');
+            $this->render('client/create');
 
         }
 
@@ -62,13 +63,49 @@ class ClientController extends AbstractController
             $clientRepo -> update($client);
 
 
-            $this -> redirect('/');
+            $this -> redirect('/client/list');
 
     } else{
-        $this -> render('client/updateClient', ['client' => $client]);
+        $this -> render('client/update', ['client' => $client]);
 
     }
 
+}
+
+// delete client
+
+public function delete(?int $id){
+    if($id === null){
+        throw new \Exception("client innexistant", 404);
+    }
+    $clientRepo = new Repository( client::class);
+
+    $clientRepo -> delete($id);
+
+    $this -> redirect('list');
+
 
 }
+
+// Affichage de la liste des clients
+
+public function list(){
+    $repo=new Repository(client::class);
+    $clientList=$repo->getAll();
+    $this->render('client/list',["clients"=>$clientList,'title'=>'list des clients']);
+}
+
+// Detail du client
+
+    public function detail(int $id){
+        $repo=new Repository(client::class);
+        $client=$repo->getById($id);
+        $this->render('client/detail',["client"=>$client,'title'=>' detail du client']);
+
+
+}
+
+
+
+
 }

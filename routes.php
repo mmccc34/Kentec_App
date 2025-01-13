@@ -52,6 +52,7 @@ const ROUTES = [
         "REQUIRED_AUTH"=>true,
         "ROLES"=>["admin"],
     ],
+    // debut des routes pour le client
     "/client/create" => [
         "CONTROLLER" => "ClientController",
         "METHOD" => "create",
@@ -66,8 +67,29 @@ const ROUTES = [
         "REQUIRED_AUTH"=>true,
         "ROLES"=>["admin"],
     ],
+    "/client/delete" => [
+        "CONTROLLER" => "ClientController",
+        "METHOD" => "delete",
+        "HTTP_METHODS" => ["GET","POST"],
+        "REQUIRED_AUTH"=>true,
+        "ROLES"=>["admin"],
+    ],
+    "/client/list" => [
+        "CONTROLLER" => "ClientController",
+        "METHOD" => "list",
+        "HTTP_METHODS" => ["GET","POST"],
+        "REQUIRED_AUTH"=>true,
+        "ROLES"=>["admin"],
+    ],
+    "/client" => [
+        "CONTROLLER" => "clientController",
+        "METHOD" => "detail",
+        "HTTP_METHODS" => "GET",
+        "REQUIRED_AUTH"=>true,
+        "ROLES"=>["admin"],
+    ],
 
 
- 
+    // fin des routes pour les clients
     
 ];
