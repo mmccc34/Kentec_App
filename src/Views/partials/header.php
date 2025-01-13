@@ -7,7 +7,7 @@
       <a href="/" class="">Accueil</a>
       <div>
         <a href="/users/list">Utilisateurs</a>
-        <a href="#services">Services</a>
+        <a href="#services">Projets</a>
         <?php
         if(isset($_SESSION["IS_AUTHENTICATED"]) && $_SESSION["IS_AUTHENTICATED"]===true){
           echo '<a href="/logout">log-out</a>';
