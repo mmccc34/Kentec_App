@@ -28,23 +28,21 @@ class ClientController extends AbstractController
             $clientRepo = new Repository(client::class);
 
             $clientRepo->insert($client);
-            
-            $this -> redirect('/');
 
-        }else{
+            $this->redirect('/');
+        } else {
             $this->render('client/create');
-
         }
-
     }
 
     //UPdate client
 
-    public function update(?int $id=null){
-        if($id===null){
-            throw new \Exception("client innexistant", 404);
+    public function update(?int $id = null)
+    {
+        if ($id === null) {
+            throw new Exception("client inexistant", 404);
         }
-        
+
         $clientRepo = new Repository(client::class);
 
         // Recupération du client à modifier
@@ -59,52 +57,44 @@ class ClientController extends AbstractController
             $client->setstaff($_POST['staff']);
             $client->setdateCreate(new \DateTimeImmutable($_POST['dateCreate']));
 
-            $clientRepo -> update($client);
+            $clientRepo->update($client);
 
 
-            $this -> redirect('/client/list');
-
-    } else{
-        $this -> render('client/update', ['client' => $client]);
-
+            $this->redirect('/client/list');
+        } else {
+            $this->render('client/update', ['client' => $client]);
+        }
     }
 
-}
+    // delete client
 
-// delete client
+    public function delete(?int $id)
+    {
+        if ($id === null) {
+            throw new Exception("client innexistant", 404);
+        }
+        $clientRepo = new Repository(client::class);
 
-public function delete(?int $id){
-    if($id === null){
-        throw new \Exception("client innexistant", 404);
+        $clientRepo->delete($id);
+
+        $this->redirect('list');
     }
-    $clientRepo = new Repository( client::class);
 
-    $clientRepo -> delete($id);
+    // Affichage de la liste des clients
 
-    $this -> redirect('list');
+    public function list()
+    {
+        $repo = new Repository(client::class);
+        $clientList = $repo->getAll();
+        $this->render('client/list', ["clients" => $clientList, 'title' => 'list des clients']);
+    }
 
+    // Detail du client
 
-}
-
-// Affichage de la liste des clients
-
-public function list(){
-    $repo=new Repository(client::class);
-    $clientList=$repo->getAll();
-    $this->render('client/list',["clients"=>$clientList,'title'=>'list des clients']);
-}
-
-// Detail du client
-
-    public function detail(int $id){
-        $repo=new Repository(client::class);
-        $client=$repo->getById($id);
-        $this->render('client/detail',["client"=>$client,'title'=>' detail du client']);
-
-
-}
-
-
-
-
+    public function detail(int $id)
+    {
+        $repo = new Repository(client::class);
+        $client = $repo->getById($id);
+        $this->render('client/detail', ["client" => $client, 'title' => ' detail du client']);
+    }
 }

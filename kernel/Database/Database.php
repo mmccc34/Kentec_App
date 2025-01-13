@@ -28,7 +28,7 @@ class Database {
     private function __construct()
     {
         try {
-            self::$connexion = new PDO($_ENV['DSN'], $_ENV['USERNAME'], $_ENV['PASSWORD']);
+            self::$connexion = new PDO($_ENV['DSN'],  $_ENV['USERNAME'], $_ENV['PASSWORD']);
         } catch(\PDOException $e) {
             throw new \Exception("Erreur de connexion à la base de données, veuillez vérifier vos paramètres de connexion");
         }
