@@ -3,7 +3,7 @@
 namespace Sthom\App\Controller;
 
 use Sthom\App\Model\Repository\UsersRepository;
-use Sthom\App\Model\Service\PlanningService;
+use Sthom\App\Service\PlanningService;
 use Sthom\Kernel\Http\AbstractController;
 
 class PlanningController extends AbstractController{
