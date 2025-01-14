@@ -1,7 +1,7 @@
 <div class="container my-5">
     <h2 class="text-center mb-4">Liste des Clients</h2>
 
-      <!-- Vérifie si la liste des clients est vide -->
+    <!-- Vérifie si la liste des clients est vide -->
     <?php if (empty($clients)): ?>
         <h3 class="text-center text-muted">Aucun Client Trouvé.</h3>
     <?php else: ?>

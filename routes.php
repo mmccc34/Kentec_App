@@ -138,9 +138,15 @@ const ROUTES = [
         "CONTROLLER" => "ProjectController",
         "METHOD" => "list",
         "HTTP_METHODS" => ["GET", "POST"],
-        "AUTH" => ["ROLE_ADMIN", "ROLE_CHEF"],
+        "AUTH" => ["ROLE_ADMIN","ROLE_DEV","ROLE_CHEF"],
     ],
-    "/planning/global"=>[
+    "/project/{id}"=>[
+        "CONTROLLER" => "ProjectController",
+        "METHOD" => "detail",
+        "HTTP_METHODS" => "GET",
+        "AUTH" => ["ROLE_ADMIN","ROLE_DEV","ROLE_CHEF"],
+    ],
+        "/planning/global"=>[
         "CONTROLLER" => "PlanningController",
         "METHOD"=> "displayPlanningGlobal",
         "HTTP_METHODS" => "GET",

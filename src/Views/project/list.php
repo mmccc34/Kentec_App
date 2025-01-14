@@ -1,12 +1,14 @@
 <div class="container my-5">
-    <h2 class="text-center mb-4">Liste des Projets</h2>
+    <h2 class="text-center mb-4">Liste des Projets</h2><br>
+    <button onclick="window.location.href='create';" type="submit" class="btn btn-primary w-15">Créer un Projet</button>
+
 
     <!-- Tableau responsive Bootstrap -->
     <div class="table-responsive">
         <table class="table table-bordered table-striped table-hover align-middle">
             <thead class="table-dark">
                 <tr>
-                    <th>ID</th>
+                    <th>N°</th>
                     <th>Nom</th>
                     <th>Client</th>
                     <th>Manager</th>
@@ -54,7 +56,7 @@
                             <?php echo htmlspecialchars($projects->getIdState()); ?>
                         </td>
                         <td>
-                            <a href="/project?id=<?php echo $projects->getId(); ?>" class="btn btn-dark btn-sm">Voir Projet</a>
+                            <a href="/project/<?php echo $projects->getId(); ?>" class="btn btn-dark btn-sm">Voir Projet</a>
 
                         </td>
 

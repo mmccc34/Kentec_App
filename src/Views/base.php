@@ -14,13 +14,15 @@
       crossorigin="anonymous"
     />
 
-    <title><?php if(isset($title)) echo $title;?></title>
+  <title><?php if (isset($title)) echo $title; ?></title>
 </head>
+
 <body>
-    <?php include_once __DIR__ .'/partials/header.php'; ?>
+  <?php include_once __DIR__ . '/partials/header.php'; ?>
 
-    <?php include_once $view; ?>
+  <?php include_once $view;?>
 
-    <?php include_once __DIR__ . '/partials/footer.php';; ?>
+  <?php include_once __DIR__ . '/partials/footer.php'; ?>
 </body>
+
 </html>
