@@ -4,6 +4,7 @@ namespace Sthom\App\Controller;
 
 use Exception;
 use Sthom\App\Model\project;
+use Sthom\App\Model\Repository\ProjectRepository;
 use Sthom\Kernel\Http\AbstractController;
 use Sthom\Kernel\Utils\Repository;
 
@@ -39,7 +40,7 @@ class ProjectController extends AbstractController
                 }
 
                 // Insertion en base de données
-                $projectRepo = new Repository(project::class);
+                $projectRepo = new ProjectRepository;
                 $projectRepo->insert($project);
 
                 // Redirection après succès
@@ -58,7 +59,7 @@ class ProjectController extends AbstractController
     // Affichage des projets
     public function list()
     {
-        $repo = new Repository(project::class);
+        $repo = new ProjectRepository;
         $projectList = $repo->getAll();
 
         // Vérification si la liste est vide
@@ -81,7 +82,7 @@ class ProjectController extends AbstractController
             throw new Exception("Projet inexistant", 404);
         }
 
-        $projectRepo = new Repository(Project::class);
+        $projectRepo = new ProjectRepository;
 
         // Récupération du projet à modifier
         $project = $projectRepo->getById($id);
@@ -125,7 +126,7 @@ class ProjectController extends AbstractController
 
     public function detail(int $id)
     {
-        $repo = new Repository(project::class);
+        $repo = new ProjectRepository;
         $project = $repo->getById($id);
         $this->render('project/detail', ["project" => $project, 'title' => ' Détail du Projet']);
     }
