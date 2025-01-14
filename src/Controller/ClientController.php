@@ -4,7 +4,7 @@ namespace Sthom\App\Controller;
 
 use Exception;
 use Sthom\App\Model\client;
-use Sthom\Kernel\Utils\AbstractController;
+use Sthom\Kernel\Http\AbstractController;
 use Sthom\Kernel\Utils\Repository;
 
 class ClientController extends AbstractController
@@ -29,7 +29,9 @@ class ClientController extends AbstractController
 
             $clientRepo->insert($client);
 
-            $this->redirect('/');
+            
+            $this -> redirect('/client/list');
+
         } else {
             $this->render('client/create');
         }
@@ -37,10 +39,12 @@ class ClientController extends AbstractController
 
     //UPdate client
 
-    public function update(?int $id = null)
-    {
-        if ($id === null) {
-            throw new Exception("client inexistant", 404);
+
+    public function update(?int $id){
+        if($id===null){
+            $this -> redirect('client/list');
+
+    
         }
 
         $clientRepo = new Repository(client::class);
@@ -48,6 +52,9 @@ class ClientController extends AbstractController
         // Recupération du client à modifier
 
         $client = $clientRepo->getById($id);
+        if ($client === null){
+            $this -> redirect ('client/list');
+        }
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
@@ -58,15 +65,48 @@ class ClientController extends AbstractController
             $client->setdateCreate(new \DateTimeImmutable($_POST['dateCreate']));
 
             $clientRepo->update($client);
+          
+            $this -> redirect('list');
 
+    } else{
+        $this -> render('client/update', ['client' => $client]);
 
-            $this->redirect('/client/list');
-        } else {
-            $this->render('client/update', ['client' => $client]);
-        }
     }
 
-    // delete client
+}
+
+
+// Affichage de la liste des clients
+
+public function list(){
+    $repo=new Repository(client::class);
+    $clientList=$repo->getAll();
+    // Vérifie si la liste est vide
+
+    if (empty($clientList)) {
+        // Rend un message uniquement
+
+        $this->render('client/list', [
+            'message' => 'Aucun client trouvé.',
+            'title' => 'Liste des clients'
+        ]);
+    } else {
+        // Rend la liste des clients
+        $this->render('client/list', [
+            'clients' => $clientList,
+            'title' => 'Liste des clients'
+        ]);
+    }
+    $this->render('client/list',["clients"=>$clientList,'title'=>'list des clients']);
+}
+
+// Detail du client
+
+    public function detail(int $id){
+        $repo=new Repository(client::class);
+        $client=$repo->getById($id);
+        $this->render('client/detail',["client"=>$client,'title'=>' detail du client']);
+    }
 
     public function delete(?int $id)
     {
@@ -75,26 +115,10 @@ class ClientController extends AbstractController
         }
         $clientRepo = new Repository(client::class);
 
+
         $clientRepo->delete($id);
 
-        $this->redirect('list');
+        $this->redirect('/client/list');
     }
 
-    // Affichage de la liste des clients
-
-    public function list()
-    {
-        $repo = new Repository(client::class);
-        $clientList = $repo->getAll();
-        $this->render('client/list', ["clients" => $clientList, 'title' => 'list des clients']);
-    }
-
-    // Detail du client
-
-    public function detail(int $id)
-    {
-        $repo = new Repository(client::class);
-        $client = $repo->getById($id);
-        $this->render('client/detail', ["client" => $client, 'title' => ' detail du client']);
-    }
 }

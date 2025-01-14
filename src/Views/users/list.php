@@ -13,8 +13,8 @@
             </p>
           </div>
           <div class="card-footer text-center">
-            <a href="/user?id=<?php echo $user->getId(); ?>" class="btn btn-primary btn-sm">Voir Profil</a>
-              <a href="/users/delete?id=<?php echo $user->getId(); ?>" class="btn btn-danger" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ?');">Supprimer</a>
+            <a href="/user/<?php echo $user->getId(); ?>" class="btn btn-primary btn-sm">Voir Profil</a>
+              <a href="/users/delete/<?php echo $user->getId(); ?>" class="btn btn-danger" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ?');">Supprimer</a>
           </div>
         </div>
       </div>

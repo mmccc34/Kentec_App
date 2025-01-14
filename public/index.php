@@ -2,13 +2,10 @@
 require_once __DIR__ . '/../vendor/autoload.php';
 use Sthom\Kernel\Kernel;
 use Sthom\App\Controller\ErrorController;
+use Sthom\Kernel\Error\ErrorHandler;
 
-try {
+ErrorHandler::handle();
+session_start();
     Kernel::boot();
-
-} catch (Exception $e) {
-    $controller = new ErrorController();
-    $controller->displayError($e);
-}
 
 
