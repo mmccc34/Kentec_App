@@ -117,7 +117,7 @@ public function list(){
 
         $clientRepo->delete($id);
 
-        $this->redirect('/client/list');
+        $this->json(["message" => "succès"]);
     }
 
 }

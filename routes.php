@@ -70,6 +70,15 @@ const ROUTES = [
         "HTTP_METHODS" => ["GET", "POST"],
         "AUTH" => ["ROLE_ADMIN"],
     ],
+
+    // crétion de route avec api pour utiliser l'asynchrone  "fetch()"
+
+    "/api/client/delete/{id}" => [
+        "CONTROLLER" => "ClientController",
+        "METHOD" => "delete",
+        "HTTP_METHODS" => ["DELETE"],
+        "AUTH" => ["ROLE_ADMIN"],
+    ],
     "/client/list" => [
         "CONTROLLER" => "ClientController",
         "METHOD" => "list",

@@ -9,7 +9,7 @@ use Sthom\Kernel\Utils\Repository;
 
 class ProjectController extends AbstractController
 {
-    // Création des clients
+    // Création des pojets
     public function create(): void
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
