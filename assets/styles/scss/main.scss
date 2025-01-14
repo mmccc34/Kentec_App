@@ -37,6 +37,7 @@ nav a {
 nav a:hover {
     color: #2580db;
 }
+
 .btn-create-account {
     background-color: #5a4a70 !important; // Muted Indigo
     color: white !important;
@@ -92,3 +93,25 @@ nav a:hover {
 .footer p {
     font-size: 14px;            /* Ajuster la taille du texte si nécessaire */
 }
+
+#btnprofil {
+    background-color: token.$english-violet;
+    border-color: #5a4a70;
+    color: rgb(240, 233, 233);
+  }
+  
+  #table-nav{
+    background-color: token.$english-violet;
+    border-color: #5a4a70;
+    color: rgb(240, 233, 233);
+
+  }
+  #btn-add{
+    background-color: token.$english-violet;
+    border-color: #5a4a70;
+    color: rgb(240, 233, 233);
+
+
+  }
+  
+
