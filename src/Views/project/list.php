@@ -1,12 +1,12 @@
 <div class="container my-5">
     <h2 class="text-center mb-4">Liste des Projets</h2><br>
-    <button onclick="window.location.href='create';" type="submit" class="btn btn-primary w-15">Créer un Projet</button>
-
+    <div class="d-flex justify-content-between align-items-center mb-4">
+    <a href="create" id="btn-add" class="btn btn-primary w-15">+ Créer un Projet</a></div>
 
     <!-- Tableau responsive Bootstrap -->
     <div class="table-responsive">
         <table class="table table-bordered table-striped table-hover align-middle">
-            <thead class="table-dark">
+            <thead id="table-nav">
                 <tr>
                     <th>N°</th>
                     <th>Nom</th>
@@ -56,7 +56,7 @@
                             <?php echo htmlspecialchars($projects->getIdState()); ?>
                         </td>
                         <td>
-                            <a href="/project/<?php echo $projects->getId(); ?>" class="btn btn-dark btn-sm">Voir Projet</a>
+                            <a href="/project/<?php echo $projects->getId(); ?>" id ="btn-add" class="btn btn-dark btn-sm">Voir Projet</a>
 
                         </td>
 
