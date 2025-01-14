@@ -2,9 +2,11 @@
 
 namespace Sthom\App\Controller;
 
+use Sthom\App\Model\Repository\UsersRepository;
 use Sthom\App\Model\users;
 use Sthom\Kernel\Http\AbstractController;
 use Sthom\Kernel\Utils\Repository;
+
 
 class UsersController extends AbstractController
 {
@@ -12,14 +14,14 @@ class UsersController extends AbstractController
 
     public function list()
     {
-        $repo = new Repository(users::class);
+        $repo = new UsersRepository();
         $users = $repo->getAll();
         $this->render('users/list', ["list" => $users, 'title' => 'users list']);
     }
 
     public function detail(int $id)
     {
-        $repo = new Repository(users::class);
+        $repo = new UsersRepository();
         $user = $repo->getById($id);
         $this->render('users/detail', ["user" => $user, 'title' => 'user detail']);
 
@@ -27,7 +29,7 @@ class UsersController extends AbstractController
 
     public function userToJson(int $id)
     {
-        $repo = new Repository(users::class);
+        $repo = new UsersRepository();
         $user = $repo->fetchById($id);
         $this->json($user);
     }
@@ -61,10 +63,10 @@ class UsersController extends AbstractController
             throw new \Exception("Utilisateur inexistant", 404);
         }
 
-        $userRepo = new Repository(users::class);
+        $repo = new UsersRepository();
 
         // Récupération de l'utilisateur à modifier
-        $user = $userRepo->getById($id);
+        $user = $repo->getById($id);
 
         if (!$user) {
             throw new \Exception("Utilisateur non trouvé", 404);
@@ -86,7 +88,7 @@ class UsersController extends AbstractController
             $user->setRole($data['role'] ?? $user->getRole());
 
             // Sauvegarde des modifications
-            $userRepo->save($user);
+            $repo->save($user);
 
             $this->redirect('/users/list');
         } else {
@@ -100,9 +102,9 @@ class UsersController extends AbstractController
         if($id === null){
             throw new \Exception("Utilisateur inexistant", 404);
         }
-        $userRepo = new Repository( users::class);
+        $repo = new UsersRepository();
 
-        $userRepo -> delete($id);
+        $repo -> delete($id);
 
         $this -> redirect('/users/list');
 
