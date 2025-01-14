@@ -4,12 +4,18 @@ h1 {
     color: rgb(0, 0, 0);
 }
 
-.day {
-    background-color: aqua;
-    border: solid 1px white;
-    box-sizing: border-box;
-}
 
+#calendar {
+    background-color: token.$muted-lilac;
+    #thead{
+        background-color: token.$lavender;
+    }
+    .day {
+        background-color: token.$muted-lilac;
+        border: solid 1px white;
+        box-sizing: border-box;
+    }
+}
 .task {
     position: relative;
     z-index: 10;
@@ -19,7 +25,7 @@ header {
     background-color: token.$english-violet;
     padding: 1rem;
 }
-  
+
 nav a {
     color: white;
     font-weight: bold;

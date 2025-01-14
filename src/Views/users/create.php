@@ -24,8 +24,9 @@
     <div class="mb-3">
         <label for="role" class="form-label">Rôle :</label>
         <select id="role" name="role" class="form-select">
-            <option value="admin">Admin</option>
-            <option value="user">Utilisateur</option>
+            <option value="ROLE_ADMIN">Admin</option>
+            <option value="ROLE_DEV">developpeur</option>
+            <option value="ROLE_CHEF">chef de projet</option>
         </select>
     </div>
 

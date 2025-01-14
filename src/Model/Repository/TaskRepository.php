@@ -1,17 +1,16 @@
 <?php
 
-namespace Sthom\App\Model\Services;
+namespace Sthom\App\Model\Repository;
 
 use Sthom\App\Model\task;
 use Sthom\Kernel\Utils\Repository;
 
-class TaskService
+class TaskService extends Repository
 {
-    private Repository $repo;
 
     public function __construct()
     {
-        $this->repo=new Repository(task::class);        
+        parent::__construct(task::class);        
     }
 
     public function getFullTaskById(int $id)
@@ -39,6 +38,6 @@ JOIN users u ON u.id = t.idDev
 JOIN project p ON p.id = t.idProject
 JOIN state s ON s.id = t.idState
         WHERE t.id=:id ";
-        return $this->repo->customQuery($query, [":id" => $id])[0];
+        return $this->customQuery($query, [":id" => $id])[0];
     }
 }

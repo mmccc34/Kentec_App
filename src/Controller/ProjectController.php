@@ -3,13 +3,15 @@
 namespace Sthom\App\Controller;
 
 use Exception;
-use Sthom\App\Model\Project;
+use Sthom\App\Model\project;
 use Sthom\Kernel\Http\AbstractController;
 use Sthom\Kernel\Utils\Repository;
 
 class ProjectController extends AbstractController
 {
+
     // Création des Projets
+
     public function create(): void
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -37,7 +39,7 @@ class ProjectController extends AbstractController
                 }
 
                 // Insertion en base de données
-                $projectRepo = new Repository(Project::class);
+                $projectRepo = new Repository(project::class);
                 $projectRepo->insert($project);
 
                 // Redirection après succès

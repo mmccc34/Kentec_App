@@ -1,4 +1,6 @@
 import './../styles/scss/main.scss';
+
+
 import { addTask, createTask } from './function.js';
 let task2=createTask('blue',1.5,"ma tache");
 addTask(task2,"row3",2);
