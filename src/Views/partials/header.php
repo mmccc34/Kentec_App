@@ -4,7 +4,7 @@
       <div>
         <a href="/users/list">Utilisateurs</a>
 
-        <a href="/client/list">Liste des Clients</a> <!-- Lien vers la liste des clients -->
+        <a href="/client/list">Clients</a> <!-- Lien vers la liste des clients -->
 
 
         <a href="/project/list">Projets</a>

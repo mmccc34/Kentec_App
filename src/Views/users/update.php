@@ -1,6 +1,6 @@
 <div class="container my-5">
     <div class="card shadow-lg">
-        <div class="card-header bg-primary text-white text-center">
+        <div class="card-header">
             <h2>Modifier l'utilisateur</h2>
         </div>
         <div class="card-body">
@@ -32,8 +32,8 @@
                     <input type="password" id="password" name="password" class="form-control">
                 </div>
                 <div class="d-flex justify-content-center">
-                    <button type="submit" class="btn btn-success me-3">Enregistrer</button>
-                    <a href="/users/list" class="btn btn-secondary">Annuler</a>
+                    <button type="submit" class="btn-create-account">Enregistrer</button>
+                    <a href="/users/list" class="btn-view-profile ">Annuler</a>
                 </div>
             </form>
         </div>
