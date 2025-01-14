@@ -1,5 +1,6 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: './assets/js/main.js', // Point d'entrée
@@ -40,6 +41,12 @@ module.exports = {
   plugins: [
     new MiniCssExtractPlugin({
       filename: 'app.css', // Fichier CSS généré
+    }),
+    // Plugin pour copier les images depuis le dossier 'src/assets/images' vers 'public/build/images'
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: 'assets/images', to: 'images' }, // Copier les images
+      ],
     }),
   ],
   mode: 'development',
