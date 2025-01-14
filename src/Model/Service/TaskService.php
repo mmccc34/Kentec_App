@@ -1,6 +1,6 @@
 <?php
 
-namespace Sthom\App\Model\Services;
+namespace Sthom\App\Model\Service;
 
 use Sthom\App\Model\task;
 use Sthom\Kernel\Utils\Repository;
