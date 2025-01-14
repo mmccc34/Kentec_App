@@ -12,7 +12,7 @@
                     <th>NAF</th>
                     <th>Effectif</th>
                     <th>Date de Création</th>
-                    <th>details du client</th>
+                    <th>Détails du Client</th>
                 </tr>
             </thead>
             <tbody>

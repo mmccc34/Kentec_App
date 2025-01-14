@@ -9,7 +9,7 @@ use Sthom\Kernel\Utils\Repository;
 
 class ProjectController extends AbstractController
 {
-    // Création des clients
+    // Création des Projets
     public function create(): void
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -41,7 +41,7 @@ class ProjectController extends AbstractController
                 $projectRepo->insert($project);
 
                 // Redirection après succès
-                $this->redirect('/');
+                $this->redirect('project/list');
             } catch (Exception $e) {
                 // Gestion des erreurs
                 $this->render('project/create', [
@@ -53,13 +53,25 @@ class ProjectController extends AbstractController
             $this->render('project/create');
         }
     }
-    // Affichage des projets 
+    // Affichage des projets
     public function list()
     {
         $repo = new Repository(project::class);
         $projectList = $repo->getAll();
-        $this->render('project/list', ["project" => $projectList, 'title' => 'liste des projets']);
+
+        // Vérification si la liste est vide
+        if (empty($projectList)) {
+            throw new Exception("Vous n'avez pas de projets en cours");
+        }
+
+        // Render si des projets existent
+        $this->render('project/list', [
+            "project" => $projectList,
+            'title' => 'Liste des projets'
+        ]);
     }
+
+
     // MAJ des projets
     public function update(?int $id = null)
     {
@@ -74,13 +86,7 @@ class ProjectController extends AbstractController
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             try {
-                $startDate = new \DateTimeImmutable($_POST['StartDate']);
-                $endDate = new \DateTimeImmutable($_POST['EndDate']);
 
-                // Vérification des dates
-                if ($endDate < $startDate) {
-                    throw new Exception("La date de fin ne peut pas être antérieure à la date de début.");
-                }
 
                 // Mise à jour des données du projet
                 $project->setIdState($_POST['Etat']);
@@ -88,9 +94,17 @@ class ProjectController extends AbstractController
                 $project->setIdClient((int)$_POST['Client']);
                 $project->setIdManager((int)$_POST['Manager']);
                 $project->setDescription($_POST['Description']);
-                $project->setStartDate($startDate);
-                $project->setEndDate($endDate);
+                $project->setStartDate(new \DateTimeImmutable($_POST['StartDate']));
+                $project->setEndDate(new \DateTimeImmutable($_POST['EndDate']));
 
+                $startDate = new \DateTimeImmutable($_POST['StartDate']);
+                $endDate = new \DateTimeImmutable($_POST['EndDate']);
+                // Vérification des dates
+                if ($endDate < $startDate) {
+                    throw new Exception("La date de fin ne peut pas être antérieure à la date de début.");
+                }
+
+                // Mise à jour dans la base de données
                 $projectRepo->update($project);
 
                 // Redirection après la mise à jour
@@ -105,5 +119,12 @@ class ProjectController extends AbstractController
             // Affichage du formulaire avec les données actuelles du projet
             $this->render('project/update', ['project' => $project]);
         }
+    }
+
+    public function detail(int $id)
+    {
+        $repo = new Repository(project::class);
+        $project = $repo->getById($id);
+        $this->render('project/detail', ["project" => $project, 'title' => ' Détail du Projet']);
     }
 };
