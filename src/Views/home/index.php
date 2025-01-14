@@ -11,6 +11,9 @@
         echo htmlspecialchars($role);
         ?></p>
 
+    <img src="/build/images/kentec-logo.svg" alt="Logo Kentec" class="img-fluid mb-4" style="max-width: 25%; height: auto;">
+
+
     <div class="button-group mt-4">
         <a href="/users/list" class="btn" style="background-color: #6e3f56; color: white; padding: 10px 20px; border-radius: 25px; margin-right: 10px;">Gestion des Utilisateurs</a>
         <a href="/client/list" class="btn" style="background-color: #6e3f56; color: white; padding: 10px 20px; border-radius: 25px; margin-right: 10px;">Gestion des clients</a>
