@@ -1,6 +1,6 @@
 <div class="container my-5">
   <div class="card shadow-lg">
-    <div class="card-header bg-primary text-white text-center">
+    <div class="card-header">
       <h2>Détails de l'utilisateur</h2>
     </div>
     <div class="card-body">

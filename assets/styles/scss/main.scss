@@ -110,8 +110,17 @@ nav a:hover {
     background-color: token.$english-violet;
     border-color: #5a4a70;
     color: rgb(240, 233, 233);
-
-
   }
-  
 
+.card .card-header {
+    background-color: token.$muted-indigo; // Applique la couleur $periwinkle en fond
+    color: white; // Texte en blanc
+    text-align: center; // Centrer le texte
+    padding: 10px; // Ajouter de l'espace autour du texte
+}
+.custom-card-header {
+    background-color: token.$muted-indigo; // La couleur que vous voulez appliquer
+    color: white; // Couleur du texte en blanc
+    text-align: center; // Centrer le texte
+    padding: 15px; // Ajoute du padding autour du titre
+}
