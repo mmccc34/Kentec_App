@@ -97,7 +97,6 @@ public function list(){
             'title' => 'Liste des clients'
         ]);
     }
-    $this->render('client/list',["clients"=>$clientList,'title'=>'list des clients']);
 }
 
 // Detail du client
@@ -118,7 +117,7 @@ public function list(){
 
         $clientRepo->delete($id);
 
-        $this->redirect('/client/list');
+        $this->json(["message" => "succès"]);
     }
 
 }

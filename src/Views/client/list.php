@@ -49,8 +49,9 @@
                             <!-- Lien vers le détail du client -->
                             <td>
                                 <a href="/client/<?= $client->getId(); ?>" class="btn btn-dark ">Voir Profil</a>
-                                <a href="/client/delete/<?php echo $client->getId(); ?>" class="btn btn-danger btn-delete" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ?');">Supprimer</a>
-
+                                <button class="btn-delete" type="button" id="<?php echo $client->getId()?>"> 
+                                    supprimer
+                                </button>
                             </td>
                         </tr>
                     <?php endforeach; ?>
@@ -59,3 +60,7 @@
         </div>
     <?php endif; ?>
 </div>
+<div id="popup-success" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 20px; border: 1px solid #ccc; border-radius: 5px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);">
+  <p id="popup-message">Client supprimé avec succès !</p>
+</div>
+<script defer src="../deleteClient.js"></script>
