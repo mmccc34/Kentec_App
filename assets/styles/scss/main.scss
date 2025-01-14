@@ -37,6 +37,63 @@ nav a {
 nav a:hover {
     color: #2580db;
 }
+
+.btn-create-account {
+    background-color: #5a4a70 !important; // Muted Indigo
+    color: white !important;
+    border: none !important;
+    padding: 10px 20px; // Ajustez selon vos besoins
+    text-transform: uppercase; // Facultatif
+    font-weight: bold; // Facultatif
+    text-align: center;
+
+    &:hover {
+        background-color: #3a4a70 !important; // Navy Blue
+        color: #7a86b9 !important; // Periwinkle
+        text-decoration: none; // Supprime les soulignements potentiels
+    }
+
+    &:focus,
+    &:active {
+        outline: none; // Supprime le contour par défaut
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); // Ajoute un léger effet
+    }
+}
+.btn-view-profile {
+    background-color: #60435f !important; // English Violet
+    color: white !important;
+    border: none !important;
+    padding: 10px 20px; // Ajustez selon vos besoins
+    text-transform: uppercase; // Facultatif
+    font-weight: bold; // Facultatif
+    text-align: center;
+
+    &:hover {
+        background-color: #4b3550 !important; // Deep Purple
+        color: #9b7b97 !important; // Lavender
+        text-decoration: none; // Supprime les soulignements
+    }
+
+    &:focus,
+    &:active {
+        outline: none; // Supprime le contour par défaut
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); // Ajoute un léger effet
+    }
+}
+
+.custom-footer {
+    background-color: token.$english-violet;  /* Fond noir */
+    color: #ffffff;             /* Texte blanc */
+}
+
+.footer-thanks, .footer-rights {
+    color: #ffffff;             /* Texte blanc pour les autres éléments */
+}
+
+.footer p {
+    font-size: 14px;            /* Ajuster la taille du texte si nécessaire */
+}
+
 #btnprofil {
     background-color: token.$english-violet;
     border-color: #5a4a70;
@@ -57,3 +114,4 @@ nav a:hover {
 
   }
   
+
