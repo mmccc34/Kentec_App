@@ -42,7 +42,7 @@ class ClientController extends AbstractController
 
     public function update(?int $id){
         if($id===null){
-            $this -> redirect('client/list');
+            $this -> redirect('/client/list');
 
     
         }
@@ -53,7 +53,7 @@ class ClientController extends AbstractController
 
         $client = $clientRepo->getById($id);
         if ($client === null){
-            $this -> redirect ('client/list');
+            $this -> redirect ('/client/list');
         }
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -66,15 +66,12 @@ class ClientController extends AbstractController
 
             $clientRepo->update($client);
           
-            $this -> redirect('list');
+            $this -> redirect('/client/list');
 
     } else{
         $this -> render('client/update', ['client' => $client]);
-
     }
-
 }
-
 
 // Affichage de la liste des clients
 
