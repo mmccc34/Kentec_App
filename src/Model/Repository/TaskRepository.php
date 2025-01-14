@@ -5,12 +5,12 @@ namespace Sthom\App\Model\Repository;
 use Sthom\App\Model\task;
 use Sthom\Kernel\Utils\Repository;
 
-class TaskService extends Repository
+class TaskRepository extends Repository
 {
 
     public function __construct()
     {
-        parent::__construct(task::class);        
+        parent::__construct(task::class);
     }
 
     public function getFullTaskById(int $id)
@@ -39,5 +39,15 @@ JOIN project p ON p.id = t.idProject
 JOIN state s ON s.id = t.idState
         WHERE t.id=:id ";
         return $this->customQuery($query, [":id" => $id])[0];
+    }
+
+    public function getTaskByUser(int $id, array $dates)
+    {
+        $query = "SELECT * FROM task t
+        WHERE t.idDev = :idDev AND 
+        t.startDate <= :date2 AND 
+        t.endDate >= :date1"
+        ;
+return $this->customQuery($query,["idDev"=>$id,"date1"=>$dates[0],"date2"=>$dates[1]]);
     }
 }
