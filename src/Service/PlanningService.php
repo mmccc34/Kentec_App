@@ -1,6 +1,6 @@
 <?php
 
-namespace Sthom\App\Model\Service;
+namespace Sthom\App\Service;
 
 use DateTime;
 
