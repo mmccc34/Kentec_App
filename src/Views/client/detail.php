@@ -1,6 +1,6 @@
 <div class="container my-5">
   <div class="card shadow-lg">
-    <div class="card-header bg-black text-white text-center">
+    <div  id ="table-nav" class="card-header text-white text-center">
       <h2>Détails du Client</h2>
     </div>
     <div class="card-body">
@@ -37,7 +37,7 @@
       </div>
     </div>
     <div class="card-footer text-center">
-      <a href="/client/list" class="btn btn-secondary">Retour à la liste</a>
+      <a href="/client/list" id="btn-retour"class="btn btn-secondary">Retour à la liste</a>
       <a href="/client/update/<?php echo $client->getId(); ?>" class="btn btn-warning">Modifier</a>
       <a href="/client/delete/<?php echo $client->getId(); ?>" class="btn btn-danger" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ?');">Supprimer</a>
     </div>
