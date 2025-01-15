@@ -2,7 +2,7 @@
     <h1 class="text-uppercase" style="color: #60435f;">Bienvenue sur l'Application de Gestion de Projets</h1>
     <p class="lead" style="color: #9b7b97;">Optimisez vos projets et simplifiez vos processus avec notre outil intuitif.</p>
 
-    <img src="/build/images/kentec-logo.svg" alt="Logo Kentec" class="img-fluid mb-4" style="max-width: 25%; height: auto;">
+
 
 
     <div class="button-group mt-4">
