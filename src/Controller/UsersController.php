@@ -36,8 +36,10 @@ class UsersController extends AbstractController
     public function create(): void
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // Récupération des données du formulaire
             $data = $_POST;
 
+            // Création d'une nouvelle instance de l'utilisateur
             $user = new users();
             $user->setName($data['name'] ?? null);
             $user->setFirstname($data['firstname'] ?? null);
@@ -45,14 +47,38 @@ class UsersController extends AbstractController
             $user->setPassword(password_hash($data['password'], PASSWORD_BCRYPT));
             $user->setRole($data['role'] ?? '');
 
+            // Gestion du fichier photo
+            if (isset($_FILES['photo']) && $_FILES['photo']['error'] === UPLOAD_ERR_OK) {
+                // Répertoire où l'image sera enregistrée
+                $uploadDir = __DIR__ . '/../../public/build/images/';
+
+                // Créer un nom unique pour éviter les conflits de fichiers
+                $photoFilename = uniqid() . '-' . basename($_FILES['photo']['name']);
+                $uploadFile = $uploadDir . $photoFilename;
+
+                // Déplacer le fichier téléchargé vers le répertoire public/build/images
+                if (move_uploaded_file($_FILES['photo']['tmp_name'], $uploadFile)) {
+                    // Si le fichier est déplacé avec succès, on enregistre le nom de fichier dans l'objet User
+                    $user->setPhotoFilename($photoFilename);
+                } else {
+                    // Gérer l'erreur si le fichier ne peut pas être déplacé
+                    // Vous pouvez aussi gérer les erreurs d'upload (taille du fichier, extension, etc.)
+                    echo "Erreur lors du téléchargement de l'image.";
+                }
+            }
+
+            // Sauvegarde de l'utilisateur dans la base de données
             $repo = new UsersRepository();
             $repo->save($user);
 
+            // Redirection vers la liste des utilisateurs
             $this->redirect('/users/list');
         } else {
+            // Si la méthode est GET, afficher le formulaire de création
             $this->render('users/create', ['title' => 'Create User']);
         }
     }
+
 
 //Update user
 
@@ -86,6 +112,26 @@ class UsersController extends AbstractController
 
             $user->setRole($data['role'] ?? $user->getRole());
 
+            // Gestion du fichier photo (si un fichier a été téléchargé)
+            if (isset($_FILES['photo']) && $_FILES['photo']['error'] === UPLOAD_ERR_OK) {
+                // Répertoire où l'image sera enregistrée
+                $uploadDir = __DIR__ . '/../../public/build/images/';
+
+                // Créer un nom unique pour éviter les conflits de fichiers
+                $photoFilename = uniqid() . '-' . basename($_FILES['photo']['name']);
+                $uploadFile = $uploadDir . $photoFilename;
+
+                // Déplacer le fichier téléchargé vers le répertoire public/build/images
+                if (move_uploaded_file($_FILES['photo']['tmp_name'], $uploadFile)) {
+                    // Si le fichier est déplacé avec succès, on enregistre le nom de fichier dans l'objet User
+                    $user->setPhotoFilename($photoFilename);
+                } else {
+                    // Gérer l'erreur si le fichier ne peut pas être déplacé
+                    // Vous pouvez aussi gérer les erreurs d'upload (taille du fichier, extension, etc.)
+                    echo "Erreur lors du téléchargement de l'image.";
+                }
+            }
+
             // Sauvegarde des modifications
             $repo->save($user);
 
@@ -95,6 +141,7 @@ class UsersController extends AbstractController
             $this->render('users/update', ['title' => 'Update User', 'user' => $user]);
         }
     }
+
 // delete client
 
     public function delete(?int $id){
