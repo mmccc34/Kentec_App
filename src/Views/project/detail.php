@@ -9,7 +9,7 @@
                     <strong>N°:</strong>
                 </div>
                 <div class="col-md-8">
-                    <?php echo htmlspecialchars($project->getId()); ?>
+                    <?= htmlspecialchars($project['projectId']); ?>
                 </div>
             </div>
             <div class="row mb-3">
@@ -17,7 +17,7 @@
                     <strong>Etat :</strong>
                 </div>
                 <div class="col-md-8">
-                    <?= htmlspecialchars($project->getIdState()) ?>
+                    <?= htmlspecialchars($project['stateName']); ?>
                 </div>
             </div>
             <div class="row mb-3">
@@ -25,7 +25,7 @@
                     <strong>Nom du Projet :</strong>
                 </div>
                 <div class="col-md-8">
-                    <?php echo htmlspecialchars($project->getName()); ?>
+                    <?= htmlspecialchars($project['projectName']); ?>
                 </div>
             </div>
             <div class="row mb-3">
@@ -33,7 +33,7 @@
                     <strong>Nom du Client :</strong>
                 </div>
                 <div class="col-md-8">
-                    <?php echo htmlspecialchars($project->getIdClient()); ?>
+                    <?= htmlspecialchars($project['clientName']); ?>
                 </div>
             </div>
             <div class="row mb-3">
@@ -41,7 +41,7 @@
                     <strong>Manager :</strong>
                 </div>
                 <div class="col-md-8">
-                    <?php echo htmlspecialchars($project->getIdManager()); ?>
+                    <?= htmlspecialchars($project['managerName'] . " " . $project['managerFirstname']); ?>
                 </div>
             </div>
             <div class="row mb-3">
@@ -49,7 +49,7 @@
                     <strong>Description :</strong>
                 </div>
                 <div class="col-md-8">
-                    <?php echo htmlspecialchars($project->getDescription()); ?>
+                    <?= htmlspecialchars($project['projectDescription']); ?>
                 </div>
             </div>
             <div class="row mb-3">
@@ -57,7 +57,7 @@
                     <strong>Date de début :</strong>
                 </div>
                 <div class="col-md-8">
-                    <?= htmlspecialchars($project->getStartDate()->format('Y-m-d')) ?>
+                    <?= htmlspecialchars($project['projectStartDate']); ?>
                 </div>
             </div>
             <div class="row mb-3">
@@ -65,14 +65,14 @@
                     <strong>Date de fin :</strong>
                 </div>
                 <div class="col-md-8">
-                    <?= htmlspecialchars($project->getEndDate()->format('Y-m-d')) ?>
+                    <?= htmlspecialchars($project['projectEndDate']); ?>
                 </div>
             </div>
         </div>
         <div class="card-footer text-center">
             <a href="/project/list" class="btn btn-secondary">Retour à la liste</a>
-            <a href="/project/update/<?php echo $project->getId(); ?>" class="btn btn-warning">Modifier</a>
-            <a href="/project/delete/<?php echo $project->getId(); ?>" class="btn btn-danger" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce projet ?');">Supprimer</a>
+            <a href="/project/update/<?= $project['projectId']; ?>" class="btn btn-warning">Modifier</a>
+            <a href="/project/delete/<?= $project['projectId']; ?>" class="btn btn-danger" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce projet ?');">Supprimer</a>
         </div>
     </div>
 </div>

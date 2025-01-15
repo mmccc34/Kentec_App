@@ -18,18 +18,30 @@
 
                 <div class="mb-3">
                     <label for="Projet" class="form-label">Nom du Projet</label>
-                    <input type="text" id="Projet" name="Projet" value="<?php echo htmlspecialchars($project->getName()); ?>" class="form-control" required>
+                    <input type="text" id="Projet" name="Projet" value="<td><?php echo htmlspecialchars($project['projectName']); ?>" class="form-control" required>
                 </div>
 
                 <div class="mb-3">
-                    <label for="Manager" class="form-label">ID du Manager</label>
-                    <input type="number" id="Manager" name="Manager" value="<?php echo htmlspecialchars($project->getIdManager()); ?>" class="form-control" required>
-                </div>
+                <label for="Manager" class="form-label">Manager :</label>
+                <select name="Manager" id="Manager" class="form-select">
+                    <?php foreach ($managers as $manager): ?>
+                        <option value="<?php echo htmlspecialchars($manager->getId()); ?>">
+                            <?php echo htmlspecialchars($manager->getName()); ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
 
-                <div class="mb-3">
-                    <label for="Client" class="form-label">Client</label>
-                    <input type="number" id=Client" name="Client" value="<?php echo htmlspecialchars($project->getIdClient()); ?>" class="form-control" required>
-                </div>
+            <div class="mb-3">
+                <label for="Client" class="form-label">Client :</label>
+                <select name="Client" id="Client" class="form-select">
+                    <?php foreach ($clients as $client): ?>
+                        <option value="<?php echo htmlspecialchars($client->getId()); ?>">
+                            <?php echo htmlspecialchars($client->getName()); ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
 
                 <div class="mb-3">
                     <label for="Description" class="form-label">Description</label>

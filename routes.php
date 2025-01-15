@@ -4,7 +4,7 @@ const ROUTES = [
         "CONTROLLER" => "HomeController",
         "METHOD" => "index",
         "HTTP_METHODS" => "GET",
-        "AUTH" => ["ROLE_ADMIN","ROLE_DEV","ROLE_CHEF"],
+        "AUTH" => ["ROLE_ADMIN", "ROLE_DEV", "ROLE_CHEF"],
     ],
     "/state/list" => [
         "CONTROLLER" => "StateController",
@@ -26,7 +26,7 @@ const ROUTES = [
         "CONTROLLER" => "AuthController",
         "METHOD" => "logout",
         "HTTP_METHODS" => "GET",
-        "AUTH" => ["ROLE_ADMIN","ROLE_DEV","ROLE_CHEF"],
+        "AUTH" => ["ROLE_ADMIN", "ROLE_DEV", "ROLE_CHEF"],
 
     ],
     "/users/list" => [
@@ -85,7 +85,7 @@ const ROUTES = [
         "HTTP_METHODS" => ["GET", "POST"],
         "AUTH" => ["ROLE_ADMIN"],
     ],
-    "/client/{id}"=>[
+    "/client/{id}" => [
         "CONTROLLER" => "ClientController",
         "METHOD" => "detail",
         "HTTP_METHODS" => "GET",
@@ -138,24 +138,24 @@ const ROUTES = [
         "CONTROLLER" => "ProjectController",
         "METHOD" => "list",
         "HTTP_METHODS" => ["GET", "POST"],
-        "AUTH" => ["ROLE_ADMIN","ROLE_DEV","ROLE_CHEF"],
+        "AUTH" => ["ROLE_ADMIN", "ROLE_DEV", "ROLE_CHEF"],
     ],
-    "/project/{id}"=>[
+    "/project/{id}" => [
         "CONTROLLER" => "ProjectController",
         "METHOD" => "detail",
         "HTTP_METHODS" => "GET",
-        "AUTH" => ["ROLE_ADMIN","ROLE_DEV","ROLE_CHEF"],
+        "AUTH" => ["ROLE_ADMIN", "ROLE_DEV", "ROLE_CHEF"],
     ],
-        "/planning/{date}"=>[
+    "/planning/{date}" => [
         "CONTROLLER" => "PlanningController",
-        "METHOD"=> "displayPlanningGlobal",
+        "METHOD" => "displayPlanningGlobal",
         "HTTP_METHODS" => "GET",
         "AUTH" => ["ROLE_ADMIN"],
     ],
-    "/planning"=>[
-    "CONTROLLER" => "PlanningController",
-    "METHOD"=> "displayPlanningGlobal",
-    "HTTP_METHODS" => "GET",
-    "AUTH" => ["ROLE_ADMIN"],
-]
+    "/planning" => [
+        "CONTROLLER" => "PlanningController",
+        "METHOD" => "displayPlanningGlobal",
+        "HTTP_METHODS" => "GET",
+        "AUTH" => ["ROLE_ADMIN"],
+    ]
 ];

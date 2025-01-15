@@ -15,9 +15,10 @@
                 <label for="Etat" class="form-label">État du Projet</label>
                 <select id="Etat" name="Etat" class="form-select" required>
                     <option value="" disabled selected>Choisir un état</option>
+                    <option value="1">En attente</option>
                     <option value="2">En cours</option>
                     <option value="3">Terminé</option>
-                    <option value="1">En attente</option>
+                    
                 </select>
             </div>
 
@@ -27,14 +28,27 @@
             </div>
 
             <div class="mb-3">
-                <label for="Client" class="form-label">ID du Client</label>
-                <input type="number" id="Client" name="Client" class="form-control" required>
+                <label for="Client" class="form-label">Client :</label>
+                <select name="Client" id="Client" class="form-select">
+                    <?php foreach ($clients as $client): ?>
+                        <option value="<?php echo htmlspecialchars($client->getId()); ?>">
+                            <?php echo htmlspecialchars($client->getName()); ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
             </div>
 
             <div class="mb-3">
-                <label for="Manager" class="form-label">ID du Manager</label>
-                <input type="number" id="Manager" name="Manager" class="form-control" required>
+                <label for="Manager" class="form-label">Manager :</label>
+                <select name="Manager" id="Manager" class="form-select">
+                    <?php foreach ($managers as $manager): ?>
+                        <option value="<?php echo htmlspecialchars($manager->getId()); ?>">
+                            <?php echo htmlspecialchars($manager->getName()); ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
             </div>
+
 
             <div class="mb-3">
                 <label for="Description" class="form-label">Description</label>
