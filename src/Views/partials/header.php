@@ -1,6 +1,14 @@
 <header>
     <nav class="container d-flex align-items-center justify-content-between">
       <a href="/" class="">Accueil</a>
+        <p class="text-white">
+            <?= htmlspecialchars($_SESSION['USER']->getFirstName()); ?>
+            <?= htmlspecialchars($_SESSION['USER']->getName()); ?> &rarr;
+            <?php
+            $role = $_SESSION['ROLE'];
+            echo htmlspecialchars($role === 'ROLE_ADMIN' ? 'Administrateur' : $role);
+            ?>
+        </p>
       <div>
         <a href="/planning">Planning</a>
         
