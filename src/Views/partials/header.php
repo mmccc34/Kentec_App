@@ -2,6 +2,8 @@
     <nav class="container d-flex align-items-center justify-content-between">
       <a href="/" class="">Accueil</a>
       <div>
+        <a href="/planning">Planning</a>
+        
         <a href="/users/list">Utilisateurs</a>
 
         <a href="/client/list">Clients</a> <!-- Lien vers la liste des clients -->

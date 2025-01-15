@@ -14,7 +14,9 @@ class PlanningController extends AbstractController{
         }
         else $date= new DateTime($date);
         $usersRepo=new UsersRepository();
-        $devs=$usersRepo->getUsersByRole("ROLE_DEV");
+
+        if($_SESSION["ROLE"]=="ROLE_DEV")$devs=[$_SESSION["USER"]];
+        else $devs=$usersRepo->getUsersByRole("ROLE_DEV");
         $days=PlanningService::getWeekDays($date);
         $sortedTasks=[];
         if($devs)$sortedTasks=PlanningService::loadTask($devs,$days);
