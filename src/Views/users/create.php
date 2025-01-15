@@ -1,5 +1,5 @@
 <form method="POST" action="/users/create" class="container mt-5 p-4 shadow rounded bg-light">
-    <h2 class="text-center mb-4">Créer un utilisateur</h2>
+    <h2 class="custom-card-header">Créer un utilisateur</h2>
 
     <div class="mb-3">
         <label for="name" class="form-label">Nom :</label>
@@ -31,6 +31,6 @@
     </div>
 
     <div class="text-center">
-        <button type="submit" class="btn btn-primary">Créer</button>
+        <button type="submit" class="btn-create-account">Créer</button>
     </div>
 </form>
