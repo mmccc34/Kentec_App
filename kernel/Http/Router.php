@@ -116,7 +116,8 @@ class Router
             }
 
             if (is_array($route['AUTH']) && !Security::hasRole($route['AUTH'])) {
-                throw new \Exception('Forbidden: Insufficient permissions');
+                header("Location: /");
+                exit;
             }
         }
     }

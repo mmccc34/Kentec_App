@@ -11,15 +11,16 @@ h1 {
         background-color: token.$lavender;
     }
     .day {
-        background-color: token.$muted-lilac;
-        border: solid 1px white;
+        background-color: whitesmoke;
+        border: solid 1px token.$lavender;
         box-sizing: border-box;
     }
+    .task {
+        position: relative;
+        z-index: 10;
+    }
 }
-.task {
-    position: relative;
-    z-index: 10;
-}
+
 
 header {
     background-color: token.$english-violet;
