@@ -150,12 +150,15 @@ const ROUTES = [
         "CONTROLLER" => "PlanningController",
         "METHOD" => "displayPlanningGlobal",
         "HTTP_METHODS" => "GET",
-        "AUTH" => ["ROLE_ADMIN"],
+        "AUTH" => ["ROLE_ADMIN","ROLE_DEV","ROLE_CHEF"],
     ],
-    "/planning" => [
-        "CONTROLLER" => "PlanningController",
-        "METHOD" => "displayPlanningGlobal",
-        "HTTP_METHODS" => "GET",
-        "AUTH" => ["ROLE_ADMIN"],
-    ]
+
+
+    "/planning"=>[
+    "CONTROLLER" => "PlanningController",
+    "METHOD"=> "displayPlanningGlobal",
+    "HTTP_METHODS" => "GET",
+    "AUTH" => ["ROLE_ADMIN","ROLE_DEV","ROLE_CHEF"],
+
+    ],
 ];

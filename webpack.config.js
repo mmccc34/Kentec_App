@@ -45,7 +45,7 @@ module.exports = {
     // Plugin pour copier les images depuis le dossier 'src/assets/images' vers 'public/build/images'
     new CopyWebpackPlugin({
       patterns: [
-        { from: 'assets/images', to: 'images' }, // Copier les images
+        { from: 'assets/Images', to: 'images' }, // Copier les images
       ],
     }),
   ],

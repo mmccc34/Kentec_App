@@ -5,7 +5,6 @@ namespace Sthom\App\Controller;
 use Sthom\App\Model\Repository\UsersRepository;
 use Sthom\App\Model\users;
 use Sthom\Kernel\Http\AbstractController;
-use Sthom\Kernel\Utils\Repository;
 
 
 class UsersController extends AbstractController
@@ -46,7 +45,7 @@ class UsersController extends AbstractController
             $user->setPassword(password_hash($data['password'], PASSWORD_BCRYPT));
             $user->setRole($data['role'] ?? '');
 
-            $repo = new Repository(users::class);
+            $repo = new UsersRepository();
             $repo->save($user);
 
             $this->redirect('/users/list');

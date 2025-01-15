@@ -113,10 +113,12 @@ class Router
         if (isset($route['AUTH'])) {
             if (!Security::isConnected()) {
                 header("Location: /login");
+                exit;
             }
 
             if (is_array($route['AUTH']) && !Security::hasRole($route['AUTH'])) {
-                throw new \Exception('Forbidden: Insufficient permissions');
+                header("Location: /");
+                exit;
             }
         }
     }

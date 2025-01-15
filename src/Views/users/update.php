@@ -21,10 +21,11 @@
                            value="<?php echo htmlspecialchars($user->getEmail()); ?>" required>
                 </div>
                 <div class="mb-3">
-                    <label for="role" class="form-label"><strong>Rôle :</strong></label>
+                    <label for="role" class="form-label">Rôle :</label>
                     <select id="role" name="role" class="form-select">
-                        <option value="ROLE_USER" <?php echo $user->getRole() === 'ROLE_USER' ? 'selected' : ''; ?>>Utilisateur</option>
-                        <option value="ROLE_ADMIN" <?php echo $user->getRole() === 'ROLE_ADMIN' ? 'selected' : ''; ?>>Administrateur</option>
+                        <option value="ROLE_ADMIN">Administrateur</option>
+                        <option value="ROLE_DEV">Développeur</option>
+                        <option value="ROLE_CHEF">Chef de projet</option>
                     </select>
                 </div>
                 <div class="mb-3">

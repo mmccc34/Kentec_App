@@ -1,5 +1,5 @@
 <div class="container my-4">
-  <h2 class="text-center mb-4">Liste des utilisateurs</h2>
+  <h2 class="custom-card-header">Liste des utilisateurs</h2>
   <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
 
     <?php foreach ($list as $user): ?>

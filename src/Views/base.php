@@ -20,6 +20,8 @@
 <body>
   <?php include_once __DIR__ . '/partials/header.php'; ?>
 
+  <img src="/build/images/kentec-logo.svg" alt="Logo Kentec" class="img-fluid mb-4 d-block mx-auto" style="max-width: 25%; height: auto;">
+
   <?php include_once $view;?>
 
   <?php include_once __DIR__ . '/partials/footer.php'; ?>
