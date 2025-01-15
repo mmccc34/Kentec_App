@@ -14,14 +14,14 @@
           </div>
           <div class="card-footer text-center">
             <a href="/user/<?php echo $user->getId(); ?>" class="btn btn-view-profile btn-sm">Voir Profil</a>
-              <a href="/users/delete/<?php echo $user->getId(); ?>" class="btn btn-danger" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ?');">Supprimer</a>
+            <a href="/users/delete/<?php echo $user->getId(); ?>" class="btn btn-danger" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ?');">Supprimer</a>
           </div>
         </div>
       </div>
     <?php endforeach; ?>
 
   </div>
-    <div class="d-flex justify-content-center mt-5">
-        <a href="/users/create" class="btn btn-create-account btn-lg">Créer un compte</a>
-    </div>
+  <div class="d-flex justify-content-center mt-5">
+    <a href="/users/create" class="btn btn-create-account btn-lg">Créer un compte</a>
+  </div>
 </div>

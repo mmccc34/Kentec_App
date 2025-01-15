@@ -18,4 +18,6 @@ class UsersRepository extends Repository{
         else throw new \Exception("le role en parametre de UsersRepository->getUsersByRole) doit être dans ['ROLE_ADMIN','ROLE_DEV','ROLE_CHEF']");
     }
 
+   
+
 }
