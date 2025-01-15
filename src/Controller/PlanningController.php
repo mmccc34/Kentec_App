@@ -16,8 +16,8 @@ class PlanningController extends AbstractController{
         $usersRepo=new UsersRepository();
         $devs=$usersRepo->getUsersByRole("ROLE_DEV");
         $days=PlanningService::getWeekDays($date);
-
-        $sortedTasks=PlanningService::loadTask($devs,$days);
+        $sortedTasks=[];
+        if($devs)$sortedTasks=PlanningService::loadTask($devs,$days);
         
         //dd($sortedTasks);
 

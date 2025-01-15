@@ -3,15 +3,15 @@
 namespace Sthom\App\Service;
 
 use Sthom\App\Model\client;
-use Sthom\Kernel\Utils\Repository;
+use Sthom\App\Model\Repository\ClientRepository;
 
 class ClientService
 {
-    private Repository $clientRepository;
+    private ClientRepository $clientRepository;
 
     public function __construct()
     {
-        $this->clientRepository = new Repository(client::class);
+        $this->clientRepository = new ClientRepository();
     }
 
     // create client

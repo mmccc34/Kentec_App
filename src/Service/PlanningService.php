@@ -56,4 +56,9 @@ class PlanningService
         }
         return $sortedTasks;
     }
+
+    public static function dateToFrFormat(string $date){
+        $dateFr=new DateTime($date);
+        return $dateFr->format("d-m-Y");
+    }
 }
