@@ -71,8 +71,8 @@
       <button
         type="submit"
         class="btn px-4 py-2"
-        style="background-color: #4a3372; color: #fff; border: none;">
-        Envoyer
+        id="btn-add">
+        Créer
       </button>
     </form>
   </div>
