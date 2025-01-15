@@ -1,6 +1,9 @@
 <div class="m-5">
     <div class="p-5 rounded " id="calendar">
     <?php
+
+use Sthom\App\Service\PlanningService;
+
         $date = new DateTime($days[0]);
         $next = clone $date;
         $previous = clone $date;
@@ -15,23 +18,23 @@
             </div>
             <div class="col-2">
                 <h4>Lundi</h4>
-                <p><?= $days[0] ?></p>
+                <p><?= PlanningService::dateToFrFormat($days[0]) ?></p>
             </div>
             <div class="col-2">
                 <h4>Mardi</h4>
-                <p><?= $days[1] ?></p>
+                <p><?= PlanningService::dateToFrFormat($days[0]) ?></p>
             </div>
             <div class="col-2">
                 <h4>Mercredi</h4>
-                <p><?= $days[2] ?></p>
+                <p><?= PlanningService::dateToFrFormat($days[0]) ?></p>
             </div>
             <div class="col-2">
                 <h4>Jeudi</h4>
-                <p><?= $days[3] ?></p>
+                <p><?= PlanningService::dateToFrFormat($days[0]) ?></p>
             </div>
             <div class="col-2">
                 <h4>Vendredi</h4>
-                <p><?= $days[4] ?></p>
+                <p><?= PlanningService::dateToFrFormat($days[0]) ?></p>
             </div>
         </div>
         <?php if ($devs==="null"): ?>
@@ -46,7 +49,8 @@
                     <div class="day col-2 py-4 px-0 d-flex justify-content-space-evenly flex-column text-center">
                         <h4><?= $dev->getName(); ?></h4>
                     </div>
-                    <?php foreach ($days as $day): ?>
+                    <?php foreach ($days as $day): 
+                        ?>
                         <div class="day col-2 px-0 d-flex justify-content-space-evenly">
                             <?php if (isset($tasks[$day])):
                                 $task = $tasks[$day];
