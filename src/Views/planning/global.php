@@ -11,8 +11,10 @@ use Sthom\App\Service\StateService;
         $next->modify("+7 days");
         $previous->modify("-7 days");
     ?>
-        <a href="/planning/<?=$previous->format("Y-m-d") ?>">semaine précédente</a>
-        <a href="/planning/<?=$next->format("Y-m-d") ?>">semaine suivante</a>
+    <div class="d-flex justify-content-between pb-3">
+        <a class="btn btn-light" href="/planning/<?=$previous->format("Y-m-d") ?>"><</a>
+        <a class="btn btn-light"  href="/planning/<?=$next->format("Y-m-d") ?>">></a>
+    </div>
         <div class="text-center row pt-3" id="thead">
             <div class="col-2 d-flex flex-column justify-content-end">
                 <p>Développeurs</p>
