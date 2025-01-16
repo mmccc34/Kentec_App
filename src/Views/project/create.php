@@ -1,6 +1,6 @@
 <div class="d-flex justify-content-center align-items-center min-vh-100 form-container">
-    <div class="container" style="max-width: 600px;">
-        <h1 class="mb-4 text-center">Créer un Nouveau Projet</h1>
+    <div class="container" style="max-width: 750px;">
+    <h1 class="custom-card-header">Créer un Projet</h1>
 
         <!-- Message d'erreur -->
         <?php if (!empty($message)) : ?>
@@ -65,7 +65,7 @@
                 <input type="date" id="EndDate" name="EndDate" class="form-control" required>
             </div>
 
-            <button type="submit" class="btn btn-primary w-100">Créer</button>
+            <button type="submit" class="btn btn-primary w-100" id="btn-add" style="margin: 10px">Créer</button>
         </form>
     </div>
 </div>

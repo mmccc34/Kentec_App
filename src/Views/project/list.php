@@ -1,5 +1,8 @@
 <div class="container my-5">
     <h2 class="custom-card-header">Liste des Projets</h2>
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <a href="create" id="btn-add" class="btn btn-primary w-15" style="background-color: #5a4a70;">+ Créer Ugitn Projet</a>
+    </div>
 
     <!-- Tableau responsive Bootstrap -->
     <div class="table-responsive">
@@ -34,9 +37,7 @@
                 <?php endforeach; ?>
             </tbody>
         </table>
-        <div class="d-flex justify-content-center mt-4">
-            <a href="create" class="btn btn-create-account btn-lg">+ Créer un Projet</a>
-        </div>
+        
 
     </div>
 </div>
