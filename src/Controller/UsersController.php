@@ -144,17 +144,37 @@ class UsersController extends AbstractController
 
 // delete client
 
-    public function delete(?int $id){
-        if($id === null){
+    public function delete(?int $id)
+    {
+        if ($id === null) {
             throw new \Exception("Utilisateur inexistant", 404);
         }
+
         $repo = new UsersRepository();
 
-        $repo -> delete($id);
+        // Récupération de l'utilisateur à supprimer
+        $user = $repo->getById($id);
 
-        $this -> redirect('/users/list');
+        if (!$user) {
+            throw new \Exception("Utilisateur non trouvé", 404);
+        }
 
+        // Vérifier si l'utilisateur a une photo et la supprimer
+        if ($user->getPhotoFilename()) {
+            $photoPath = __DIR__ . '/../../public/build/images/' . $user->getPhotoFilename();
 
+            // Vérifier si le fichier existe et le supprimer
+            if (file_exists($photoPath)) {
+                unlink($photoPath); // Supprimer le fichier photo
+            }
+        }
+
+        // Supprimer l'utilisateur de la base de données
+        $repo->delete($id);
+
+        // Rediriger vers la liste des utilisateurs après la suppression
+        $this->redirect('/users/list');
     }
+
 
 }
