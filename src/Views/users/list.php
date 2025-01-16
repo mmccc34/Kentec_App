@@ -34,4 +34,3 @@
         <a href="/users/create" class="btn btn-create-account btn-lg">Créer un compte</a>
     </div>
 </div>
-

@@ -45,10 +45,11 @@ nav a:hover {
     background-color: #5a4a70 !important; // Muted Indigo
     color: white !important;
     border: none !important;
-    padding: 10px 20px; // Ajustez selon vos besoins
+    padding: 10px 10px; // Ajustez selon vos besoins
     text-transform: uppercase; // Facultatif
     font-weight: bold; // Facultatif
     text-align: center;
+    margin : 15px 15px 15px;
 
     &:hover {
         background-color: #3a4a70 !important; // Navy Blue
@@ -124,10 +125,16 @@ nav a:hover {
     color: white; // Texte en blanc
     text-align: center; // Centrer le texte
     padding: 10px; // Ajouter de l'espace autour du texte
+    
 }
 .custom-card-header {
     background-color: token.$muted-indigo; // La couleur que vous voulez appliquer
     color: white; // Couleur du texte en blanc
     text-align: center; // Centrer le texte
     padding: 15px; // Ajoute du padding autour du titre
+}
+#table-nav{
+    background-color: token.$muted-indigo; // La couleur que vous voulez appliquer
+    color: white; // Couleur du texte en blanc
+    text-align: left; // Centrer le texte
 }
