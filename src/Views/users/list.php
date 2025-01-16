@@ -34,6 +34,7 @@
         <?php endforeach; ?>
 
     </div>
-
+    <div class="d-flex justify-content-center mt-5">
+        <a href="/users/create" class="btn btn-create-account btn-lg">Créer un compte</a>
+    </div>
 </div>
-
