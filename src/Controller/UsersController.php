@@ -23,7 +23,6 @@ class UsersController extends AbstractController
         $repo = new UsersRepository();
         $user = $repo->getById($id);
         $this->render('users/detail', ["user" => $user, 'title' => 'user detail']);
-
     }
 
     public function userToJson(int $id)
@@ -80,7 +79,7 @@ class UsersController extends AbstractController
     }
 
 
-//Update user
+    //Update user
 
     public function update(?int $id = null): void
     {
@@ -142,7 +141,7 @@ class UsersController extends AbstractController
         }
     }
 
-// delete client
+    // delete client
 
     public function delete(?int $id)
     {
@@ -175,6 +174,4 @@ class UsersController extends AbstractController
         // Rediriger vers la liste des utilisateurs après la suppression
         $this->redirect('/users/list');
     }
-
-
 }
