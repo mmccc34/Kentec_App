@@ -157,5 +157,24 @@ const ROUTES = [
     "METHOD"=> "displayPlanningGlobal",
     "HTTP_METHODS" => "GET",
     "AUTH" => ["ROLE_ADMIN","ROLE_DEV","ROLE_CHEF"],
-    ]
+    ],
+    "/api/task/check"=>[
+    "CONTROLLER" => "TaskController",
+    "METHOD"=> "taskCheck",
+    "HTTP_METHODS" => "POST",
+    ],
+    "/task/create"=>[
+    "CONTROLLER" => "TaskController",
+    "METHOD"=> "create",
+    "HTTP_METHODS" => "POST",
+    "AUTH" => ["ROLE_ADMIN"],
+    ],
+    "/api/task/delete/{id}" => [
+        "CONTROLLER" => "TaskController",
+        "METHOD" => "apiDelete",
+        "HTTP_METHODS" => ["DELETE"],
+        "AUTH" => ["ROLE_ADMIN"],
+    ],
+
+    
 ];

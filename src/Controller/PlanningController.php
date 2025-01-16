@@ -3,6 +3,7 @@
 namespace Sthom\App\Controller;
 
 use DateTime;
+use Sthom\App\Model\Repository\ProjectRepository;
 use Sthom\App\Model\Repository\UsersRepository;
 use Sthom\App\Service\PlanningService;
 use Sthom\Kernel\Http\AbstractController;
@@ -21,8 +22,9 @@ class PlanningController extends AbstractController{
         $sortedTasks=[];
         if($devs)$sortedTasks=PlanningService::loadTask($devs,$days);
         
-        //dd($sortedTasks);
+        $projectRepo=new ProjectRepository;
+        $projects=$projectRepo->getAll();
 
-        $this->render("planning/global",["title"=>"planning global","devs"=>$devs,"days"=>$days,"sortedTasks"=>$sortedTasks]);
+        $this->render("planning/global",["title"=>"planning global","devs"=>$devs,"days"=>$days,"sortedTasks"=>$sortedTasks,"projects"=>$projects]);
     }
 }
