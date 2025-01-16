@@ -1,4 +1,8 @@
 <div class="container my-4">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <a href="/users/create" id="btn-add" class="btn btn-primary w-15" style="background-color: #5a4a70;">+ Créer un Utilisateur</a>
+    </div>
     <h2 class="custom-card-header">Liste des utilisateurs</h2>
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
 
@@ -30,8 +34,6 @@
         <?php endforeach; ?>
 
     </div>
-    <div class="d-flex justify-content-center mt-5">
-        <a href="/users/create" class="btn btn-create-account btn-lg">Créer un compte</a>
-    </div>
+
 </div>
 

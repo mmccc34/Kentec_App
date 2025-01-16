@@ -6,8 +6,9 @@
 
 
     <div class="button-group mt-4">
+        <a href="/planning" class="btn" style="background-color: #60435f; color: white; padding: 10px 20px; border-radius: 25px; margin-right: 10px;">Gestion du Planning</a>
         <a href="/users/list" class="btn" style="background-color: #60435f; color: white; padding: 10px 20px; border-radius: 25px; margin-right: 10px;">Gestion des Utilisateurs</a>
-        <a href="/client/list" class="btn" style="background-color: #60435f; color: white; padding: 10px 20px; border-radius: 25px; margin-right: 10px;">Gestion des clients</a>
+        <a href="/client/list" class="btn" style="background-color: #60435f; color: white; padding: 10px 20px; border-radius: 25px; margin-right: 10px;">Gestion des Clients</a>
         <a href="/project/list" class="btn" style="background-color: #60435f; color: white; padding: 10px 20px; border-radius: 25px; margin-right: 10px;">Gestion des Projets</a>
 
     </div>
