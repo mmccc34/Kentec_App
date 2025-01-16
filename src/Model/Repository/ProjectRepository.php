@@ -2,7 +2,7 @@
 
 namespace Sthom\App\Model\Repository;
 
-use Sthom\App\Model\Project;
+use Sthom\App\Model\project;
 use Sthom\Kernel\Database\Database;
 use Sthom\Kernel\Utils\Repository;
 
