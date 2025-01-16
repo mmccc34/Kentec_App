@@ -4,7 +4,9 @@ namespace Sthom\App\Controller;
 
 use Exception;
 use Sthom\App\Model\project;
+use Sthom\App\Model\Repository\ClientRepository;
 use Sthom\App\Model\Repository\ProjectRepository;
+use Sthom\App\Model\Repository\UsersRepository;
 use Sthom\Kernel\Http\AbstractController;
 use Sthom\Kernel\Utils\Repository;
 
@@ -44,7 +46,7 @@ class ProjectController extends AbstractController
                 $projectRepo->insert($project);
 
                 // Redirection après succès
-                $this->redirect('project/list');
+                $this->redirect('/project/list');
             } catch (Exception $e) {
                 // Gestion des erreurs
                 $this->render('project/create', [
@@ -53,14 +55,24 @@ class ProjectController extends AbstractController
             }
         } else {
             // Affichage du formulaire si non soumis
-            $this->render('project/create');
+            $clientsrepo = new ClientRepository();
+            $clientsList = $clientsrepo->getAll();
+
+            $managerrepo = new UsersRepository();
+            $manager = $managerrepo->getUsersByRole("ROLE_CHEF");
+
+            $this->render('/project/create', [
+                "clients" => $clientsList,
+                "managers" => $manager,
+                'title' => 'Création de Projet'
+            ]);
         }
     }
     // Affichage des projets
     public function list()
     {
-        $repo = new ProjectRepository;
-        $projectList = $repo->getAll();
+        $repo = new ProjectRepository();
+        $projectList = $repo->getAllProjectsWithDetails();
 
         // Vérification si la liste est vide
         if (empty($projectList)) {
@@ -69,7 +81,7 @@ class ProjectController extends AbstractController
 
         // Render si des projets existent
         $this->render('project/list', [
-            "project" => $projectList,
+            "projects" => $projectList,
             'title' => 'Liste des projets'
         ]);
     }
@@ -82,37 +94,51 @@ class ProjectController extends AbstractController
             throw new Exception("Projet inexistant", 404);
         }
 
-        $projectRepo = new ProjectRepository;
+        $projectRepo = new ProjectRepository();
 
-        // Récupération du projet à modifier
-        $project = $projectRepo->getById($id);
+        // Récupération du projet à modifier avec tous les détails
+        $project = $projectRepo->getFullProjectById($id);
+
+        if (!$project) {
+            throw new Exception("Projet non trouvé", 404);
+        }
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             try {
+                // Validation des données reçues
+                $requiredFields = ['Etat', 'Projet', 'Client', 'Manager', 'Description', 'StartDate', 'EndDate'];
+                foreach ($requiredFields as $field) {
+                    if (empty($_POST[$field])) {
+                        throw new Exception("Le champ '$field' est obligatoire.");
+                    }
+                }
 
-
-                // Mise à jour des données du projet
-                $project->setIdState($_POST['Etat']);
-                $project->setName($_POST['Projet']);
-                $project->setIdClient((int)$_POST['Client']);
-                $project->setIdManager((int)$_POST['Manager']);
-                $project->setDescription($_POST['Description']);
-                $project->setStartDate(new \DateTimeImmutable($_POST['StartDate']));
-                $project->setEndDate(new \DateTimeImmutable($_POST['EndDate']));
+                // Création d'un nouvel objet Project avec les données mises à jour
+                $updatedProject = new Project();
+                $updatedProject->setId($id);
+                $updatedProject->setIdState($_POST['Etat']);
+                $updatedProject->setName($_POST['Projet']);
+                $updatedProject->setIdClient((int)$_POST['Client']);
+                $updatedProject->setIdManager((int)$_POST['Manager']);
+                $updatedProject->setDescription($_POST['Description']);
+                $updatedProject->setStartDate(new \DateTimeImmutable($_POST['StartDate']));
+                $updatedProject->setEndDate(new \DateTimeImmutable($_POST['EndDate']));
 
                 $startDate = new \DateTimeImmutable($_POST['StartDate']);
                 $endDate = new \DateTimeImmutable($_POST['EndDate']);
+
                 // Vérification des dates
                 if ($endDate < $startDate) {
                     throw new Exception("La date de fin ne peut pas être antérieure à la date de début.");
                 }
 
                 // Mise à jour dans la base de données
-                $projectRepo->update($project);
+                $projectRepo->update($updatedProject);
 
                 // Redirection après la mise à jour
                 $this->redirect('/project/list');
             } catch (Exception $e) {
+                // En cas d'erreur, on réaffiche le formulaire avec le message d'erreur
                 $this->render('project/update', [
                     'project' => $project,
                     'message' => "Erreur : " . $e->getMessage(),
@@ -126,8 +152,29 @@ class ProjectController extends AbstractController
 
     public function detail(int $id)
     {
-        $repo = new ProjectRepository;
-        $project = $repo->getById($id);
-        $this->render('project/detail', ["project" => $project, 'title' => ' Détail du Projet']);
+        $repo = new ProjectRepository();
+        $project = $repo->getFullProjectById($id);
+
+        if (!$project) {
+            throw new Exception("Projet introuvable", 404);
+        }
+
+        $this->render('project/detail', [
+            "project" => $project,
+            "title" => "Détail du Projet"
+        ]);
+    }
+
+    public function delete(?int $id){
+        if($id === null){
+            throw new Exception("Projet inexistant", 404);
+        }
+        $repo = new UsersRepository();
+
+        $repo -> delete($id);
+
+        $this -> redirect('/project/list');
+
+
     }
 };
