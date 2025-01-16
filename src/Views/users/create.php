@@ -1,4 +1,4 @@
-<form method="POST" action="/users/create" class="container mt-5 p-4 shadow rounded bg-light">
+<form method="POST" action="/users/create" class="container mt-5 p-4 shadow rounded bg-light" enctype="multipart/form-data">
     <h2 class="custom-card-header">Créer un utilisateur</h2>
 
     <div class="mb-3">
@@ -28,6 +28,12 @@
             <option value="ROLE_DEV">Développeur</option>
             <option value="ROLE_CHEF">Chef de projet</option>
         </select>
+    </div>
+
+    <!-- Nouveau champ pour télécharger une photo -->
+    <div class="mb-3">
+        <label for="photo" class="form-label">Photo de profil :</label>
+        <input type="file" id="photo" name="photo" class="form-control" accept="image/*">
     </div>
 
     <div class="text-center">

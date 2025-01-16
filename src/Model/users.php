@@ -12,6 +12,7 @@ const TABLE="users";
     private ?string $firstname = null;
     private string $email;
     private string $role="";
+    private ?string $photoFilename = null;
 
     public function getId(): ?int
     {
@@ -71,6 +72,13 @@ const TABLE="users";
     public function setRole(string $role): void
     {
         $this->role=$role;
+    }
+    public function getPhotoFilename(): ?string {
+        return $this->photoFilename;
+    }
+
+    public function setPhotoFilename(?string $photoFilename): void {
+        $this->photoFilename = $photoFilename;
     }
 
 }
