@@ -50,7 +50,7 @@ const ROUTES = [
 
     ],
 
-
+// oublie pas de changer les routes dans ce fichier :) 
     // debut des routes pour le client
     "/client/create" => [
         "CONTROLLER" => "ClientController",
@@ -75,10 +75,11 @@ const ROUTES = [
 
     "/api/client/delete/{id}" => [
         "CONTROLLER" => "ClientController",
-        "METHOD" => "delete",
+        "METHOD" => "deleteApi",
         "HTTP_METHODS" => ["DELETE"],
         "AUTH" => ["ROLE_ADMIN"],
     ],
+
     "/client/list" => [
         "CONTROLLER" => "ClientController",
         "METHOD" => "list",

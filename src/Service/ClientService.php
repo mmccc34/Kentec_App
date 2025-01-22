@@ -2,12 +2,14 @@
 
 namespace Sthom\App\Service;
 
+use Exception;
 use Sthom\App\Model\client;
 use Sthom\App\Model\Repository\ClientRepository;
 
 class ClientService
 {
     private ClientRepository $clientRepository;
+
 
     public function __construct()
     {
@@ -67,6 +69,8 @@ class ClientService
     {
         $this->clientRepository->delete($id);
     }
+
+
 }
 
 
