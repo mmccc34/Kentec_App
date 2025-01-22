@@ -54,9 +54,9 @@
                             <!-- Lien vers le détail du client -->
                             <td>
                                 <a href="/client/<?= $client->getId(); ?>" id= "btnprofil"class="btn btn-indigo ">Voir Profil</a>
-                                <button class="btn btn-danger btn-delete" type="button" id="<?php echo $client->getId(); ?>" onclick="confirmerSuppression(<?php echo $client->getId(); ?>)">
-  Supprimer
-</button>
+                                <button class="btn btn-danger btn-delete" type="button" id="<?php echo $client->getId(); ?>">
+                                    Supprimer
+                                </button>
 
                             </td>
                         </tr>

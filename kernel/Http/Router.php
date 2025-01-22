@@ -2,6 +2,8 @@
 
 namespace Sthom\Kernel\Http;
 
+use Exception;
+use Sthom\App\Controller\ErrorController;
 use Sthom\Kernel\Utils\Security;
 
 class Router
@@ -115,10 +117,13 @@ class Router
                 header("Location: /login");
                 exit;
             }
-
             if (is_array($route['AUTH']) && !Security::hasRole($route['AUTH'])) {
-                header("Location: /");
-                exit;
+                  // si le logger est diff d'un adm ou du cp ==> msg (")
+
+                $controller = new ErrorController();
+                $controller->displayError(new Exception("vous n'avez pas accès à cette page", 203));
+                 
+                
             }
         }
     }
