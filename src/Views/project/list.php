@@ -4,7 +4,7 @@
     </div>
     <h2 class="custom-card-header">Liste des Projets</h2>
 
-
+gi
     <!-- Tableau responsive Bootstrap -->
     <div class="table-responsive">
         <table class="table table-bordered table-striped table-hover align-middle">
