@@ -19,7 +19,7 @@
                             <?php endif; ?>
                         </div>
 
-                        <h5 class="card-title"><?php echo htmlspecialchars($user->getFirstname() . ' ' . $user->getName()); ?></h5>
+                        <h3 class="card-title"><?php echo htmlspecialchars($user->getFirstname() . ' ' . $user->getName()); ?></h3>
                         <p class="card-text">
                             <strong>Email :</strong> <?php echo htmlspecialchars($user->getEmail()); ?><br>
                             <strong>Rôle :</strong> <?php echo htmlspecialchars($user->getRole()); ?>
@@ -34,7 +34,5 @@
         <?php endforeach; ?>
 
     </div>
-    <div class="d-flex justify-content-center mt-5">
-        <a href="/users/create" class="btn btn-create-account btn-lg">Créer un compte</a>
-    </div>
+
 </div>

@@ -1,6 +1,6 @@
 <div class="d-flex justify-content-center align-items-center min-vh-100 form-container">
     <div class="container" style="max-width: 750px;">
-    <h1 class="custom-card-header">Créer un Projet</h1>
+        <h1 class="custom-card-header">Créer un Projet</h1>
 
         <!-- Message d'erreur -->
         <?php if (!empty($message)) : ?>
@@ -18,7 +18,7 @@
                     <option value="1">En attente</option>
                     <option value="2">En cours</option>
                     <option value="3">Terminé</option>
-                    
+
                 </select>
             </div>
 
@@ -43,7 +43,7 @@
                 <select name="Manager" id="Manager" class="form-select">
                     <?php foreach ($managers as $manager): ?>
                         <option value="<?php echo htmlspecialchars($manager->getId()); ?>">
-                            <?php echo htmlspecialchars($manager->getName()); ?>
+                            <?php echo htmlspecialchars($manager->getFirstName().' '.$manager->getName()); ?>
                         </option>
                     <?php endforeach; ?>
                 </select>
