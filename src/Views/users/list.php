@@ -1,6 +1,6 @@
 <div class="container my-4">
 
-    <div class="d-flex justify-content-between align-items-center mb-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
         <a href="/users/create" id="btn-add" class="btn btn-primary w-15" style="background-color: #5a4a70;">+ Créer un Utilisateur</a>
     </div>
     <h2 class="custom-card-header">Liste des utilisateurs</h2>
