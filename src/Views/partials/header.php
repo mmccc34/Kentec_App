@@ -16,7 +16,7 @@
             ?>
         </p>
         <?php endif; ?>
-      <div>
+      <div class="btn">
         <a href="/planning">Planning</a>
         
         <a href="/users/list">Utilisateurs</a>

@@ -1,7 +1,7 @@
 <div class="container my-5">
     <h2 class="custom-card-header">Liste des Projets</h2>
     <div class="d-flex justify-content-between align-items-center mb-3">
-        <a href="create" id="btn-add" class="btn btn-primary w-15" style="background-color: #5a4a70;">+ Créer Ugitn Projet</a>
+        <a href="create" id="btn-add" class="btn btn-primary w-15" style="background-color: #5a4a70;">+ Créer Un Projet</a>
     </div>
 
     <!-- Tableau responsive Bootstrap -->
