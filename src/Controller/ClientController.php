@@ -1,7 +1,6 @@
 <?php
 
 namespace Sthom\App\Controller;
-
 use Exception;
 use Sthom\App\Service\ClientService;
 use Sthom\Kernel\Http\AbstractController;
@@ -27,15 +26,12 @@ class ClientController extends AbstractController
             $this->render('client/create');
         }
     }
-
     // update client
-
     public function update(?int $id)
     {
         if ($id === null) {
             $this->redirect('/client/list');
         }
-
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $updatedClient = $this->clientService->updateClient($id, $_POST);
             if ($updatedClient === null) {
@@ -50,9 +46,7 @@ class ClientController extends AbstractController
             $this->render('client/update', ['client' => $client]);
         }
     }
-
     // liste des clients
-
     public function list()
     {
         $clientList = $this->clientService->getClientList();
@@ -68,7 +62,6 @@ class ClientController extends AbstractController
             ]);
         }
     }
-
     // deatils du client
 
     public function detail(int $id)
@@ -88,9 +81,7 @@ class ClientController extends AbstractController
         $this->clientService->deleteClient($id);
         $this->json(["message" => "Succès"]);
     }
-
     // --> delete avec PHP
-
     public function delete(?int $id)  // --> delete avec PHP
     {
         if ($id === null) {
