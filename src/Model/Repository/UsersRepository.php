@@ -2,22 +2,21 @@
 
 namespace Sthom\App\Model\Repository;
 
-use Sthom\App\Model\users;
+use Sthom\App\Model\Users;
 use Sthom\Kernel\Utils\Repository;
 
-class UsersRepository extends Repository{
-
-    public function __construct() {
-        parent::__construct(users::class);
+class UsersRepository extends Repository
+{
+    public function __construct()
+    {
+        parent::__construct(Users::class);
     }
 
-    public function getUsersByRole($role){
-        if(in_array($role,["ROLE_ADMIN","ROLE_DEV","ROLE_CHEF"])){
-            return $this->getByAttributes(["role"=>$role]);
+    public function getUsersByRole($role)
+    {
+        if (!in_array($role, ["ROLE_ADMIN", "ROLE_DEV", "ROLE_CHEF"])) {
+            throw new \Exception("Le rôle doit être parmi ['ROLE_ADMIN', 'ROLE_DEV', 'ROLE_CHEF']");
         }
-        else throw new \Exception("le role en parametre de UsersRepository->getUsersByRole) doit être dans ['ROLE_ADMIN','ROLE_DEV','ROLE_CHEF']");
+        return $this->getByAttributes(["role" => $role]);
     }
-
-   
-
 }
