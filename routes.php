@@ -178,5 +178,11 @@ const ROUTES = [
         "HTTP_METHODS" => ["DELETE"],
         "AUTH" => ["ROLE_ADMIN"],
     ],
+    "/api/user/delete/{id}" => [
+        "CONTROLLER" => "UsersController",
+        "METHOD" => "deleteApi",
+        "HTTP_METHODS" => ["DELETE"],
+        "AUTH" => ["ROLE_ADMIN"],
+    ],
 
 ];

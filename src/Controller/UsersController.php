@@ -68,4 +68,22 @@ class UsersController extends AbstractController
         $this->service->deleteUser($id);
         $this->redirect('/users/list');
     }
+
+    public function deleteApi(int $id)
+    {
+        try {
+            $this->service->deleteUser($id);
+
+            // Répond avec un JSON valide pour éviter l'erreur JSON.parse
+            echo json_encode(["success" => true, "message" => "Utilisateur supprimé"]);
+            http_response_code(200);
+            exit;
+        } catch (Exception $e) {
+            echo json_encode(["success" => false, "error" => $e->getMessage()]);
+            http_response_code(400);
+            exit;
+        }
+    }
+
+
 }
