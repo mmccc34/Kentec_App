@@ -1,11 +1,10 @@
 const btns = document.querySelectorAll(".btn-delete");
-
 btns.forEach(btn => {
   btn.addEventListener("click", () => {
     const clientId = btn.id;
 
     // Vérification si l'ID est valide
-    if (!clientId || isNaN(Number(clientId))) {
+    if (!clientId || isNaN(Number(clientId)) || Number(clientId) <= 0) {
       console.log("ID client invalide");
       return;
     }
@@ -24,12 +23,12 @@ function afficherPopup(message) {
   const messageContainer = document.getElementById('popup-message');
 
   // Effacer les anciens messages et ajouter le nouveau
-  messageContainer.innerHTML = ''; // Correction ici
+  messageContainer.textContent = ''; 
   messageContainer.appendChild(safeMessage);
 
   popup.style.display = 'block'; // Afficher le popup
   setTimeout(() => {
-    fermerPopup();
+    fermerPopup(); // fermeture après 2 secondes
   }, 2000);
 }
 
